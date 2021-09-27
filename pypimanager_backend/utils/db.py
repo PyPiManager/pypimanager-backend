@@ -15,7 +15,6 @@ from settings import SQLALCHEMY_URL, SQLALCHEMY_ECHO, SQLALCHEMY_AUTO_FLUSH, SQL
 from utils.log import logger
 
 
-
 class DB:
     @logger.catch(reraise=True)
     def __init__(self, url: str = None, echo: bool = None, auto_flush: bool = None, auto_commit: bool = None):
