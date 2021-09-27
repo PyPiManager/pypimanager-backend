@@ -6,7 +6,6 @@
 # @Last Modified: 2021/09/27 11:39
 # @Modified By: toddlerya
 
-
 import logging
 
 LOG_LEVEL = logging.getLevelName("INFO")
