@@ -7,7 +7,7 @@
 # @Modified By: toddlerya
 
 
-from sqlalchemy import Column, Integer, Float, String, DateTime, ForeignKey, UniqueConstraint, func, text, inspect
+from sqlalchemy import Column, Integer, Boolean, String, DateTime, ForeignKey, UniqueConstraint, func, text, inspect
 from sqlalchemy.orm import declarative_base, declared_attr, declarative_mixin
 
 Base = declarative_base()
@@ -15,10 +15,11 @@ Base = declarative_base()
 
 @declarative_mixin
 class CommonTableArgsMixin:
-
+    """
+    公共表参数基础类
+    """
     @declared_attr
     def __table_args__(cls):
-        print(cls.__dict__)
         args = list()
         __args_map__ = {
                 'mysql_charset': 'utf8mb4',
@@ -35,7 +36,7 @@ class CommonTableArgsMixin:
 @declarative_mixin
 class CommonColumnMixin:
     """
-    基础模型公共字段基础类
+    公共字段基础类
     """
     id = Column(Integer, primary_key=True, autoincrement=True, comment='主键')
     remark = Column(String(length=128), default='', comment='备注')
@@ -52,7 +53,26 @@ class User(CommonTableArgsMixin, CommonColumnMixin, Base):
     __table_args_map__ = {
         'comment': '用户信息表',
     }
-    username = Column(String(length=16), unique=True, index=True, comment='用户名')
+    username = Column(String(length=16), unique=True, index=True, nullable=False, comment='用户名')
     nickname = Column(String(length=32), nullable=False, comment='用户昵称')
-    email = Column(String(length=32), nullable=False, index=True, comment='用户邮箱')
-    password_hash = Column(String(length=128), nullable=False, comment='用户密码hash值')
+    email = Column(String(length=32), unique=True, index=True, nullable=False, comment='用户邮箱')
+    hashed_password = Column(String(length=128), nullable=False, comment='用户密码hash值')
+    role = Column(String(length=16), ForeignKey('role.role_name'), nullable=False, comment='用户角色')
+    disabled = Column(Boolean, nullable=False, default=False, comment='用户是否被禁用')
+
+
+class Role(CommonTableArgsMixin, CommonColumnMixin, Base):
+    """
+    用户角色权限表
+    """
+    __tablename__ = 'role'
+    __table_args_map__ = {
+        'comment': '用户角色权限表'
+    }
+    role_name = Column(String(length=16), unique=True, nullable=False, comment='角色名称')
+    role_desc = Column(String(length=32), nullable=False, comment='角色描述')
+    upload = Column(Boolean, nullable=False, comment='上传权限')
+    delete = Column(Boolean, nullable=False, comment='删除权限')
+    user_manage = Column(Boolean, nullable=False, comment='用户管理权限')
+    disabled = Column(Boolean, nullable=False, default=False, comment='角色是否被禁用')
+
