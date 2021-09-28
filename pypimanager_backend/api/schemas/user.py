@@ -25,7 +25,7 @@ class UserBase(BaseModel):
     disabled: Optional[bool] = Field(False, description='用户是否被禁用')
 
 
-class UserManage(UserBase, extra=Extra.forbid):
+class UserManage(UserBase):
     """管理用户信息数据结构定义"""
     nickname: str = Field(..., description='用户昵称')
     email: str = Field(..., description='用户邮箱')

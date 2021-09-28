@@ -20,6 +20,7 @@ class ErrorCode:
         B --> 数据处理错误
         C --> 文件操作错误
         D --> 数据库错误
+        E --> 网络请求错误
 
     错误编号:
         四位数字
@@ -60,6 +61,11 @@ class ErrorCode:
         self.DB_SAFE_CHECK_ERROR = {
             'code': 'D3000',
             'description': '数据库查询SQL安全检查不通过'
+        }
+
+        self.HTTP_401_UNAUTHORIZED_ERROR = {
+            'code': 'E4010',
+            'description': '用户名或密码错误'
         }
 
 
