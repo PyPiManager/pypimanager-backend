@@ -1,0 +1,1070 @@
+2021-09-28 14:20:45 | INFO | server serve:64 - Started server process [1619174]
+2021-09-28 14:20:45 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:20:45 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:20:45 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:20:55 | INFO | h11_impl send:467 - 127.0.0.1:55060 - "GET / HTTP/1.1" 200
+2021-09-28 14:20:55 | INFO | h11_impl send:467 - 127.0.0.1:55060 - "GET /favicon.ico HTTP/1.1" 404
+2021-09-28 14:21:00 | INFO | h11_impl send:467 - 127.0.0.1:55060 - "GET /docs HTTP/1.1" 200
+2021-09-28 14:21:01 | INFO | h11_impl send:467 - 127.0.0.1:55060 - "GET /openapi.json HTTP/1.1" 200
+2021-09-28 14:23:14 | INFO | h11_impl send:467 - 127.0.0.1:55096 - "GET /docs HTTP/1.1" 200
+2021-09-28 14:23:14 | INFO | h11_impl send:467 - 127.0.0.1:55096 - "GET /openapi.json HTTP/1.1" 200
+2021-09-28 14:25:06 | INFO | server shutdown:239 - Shutting down
+2021-09-28 14:25:07 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 14:25:07 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 14:25:07 | INFO | server serve:77 - Finished server process [1619174]
+2021-09-28 14:25:07 | INFO | server serve:64 - Started server process [1619754]
+2021-09-28 14:25:07 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:25:07 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:25:07 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:25:11 | INFO | h11_impl send:467 - 127.0.0.1:55122 - "GET /docs HTTP/1.1" 200
+2021-09-28 14:25:11 | INFO | h11_impl send:467 - 127.0.0.1:55122 - "GET /openapi.json HTTP/1.1" 200
+2021-09-28 14:27:01 | INFO | server shutdown:239 - Shutting down
+2021-09-28 14:27:01 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 14:27:01 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 14:27:01 | INFO | server serve:77 - Finished server process [1619754]
+2021-09-28 14:28:10 | INFO | server serve:64 - Started server process [1620181]
+2021-09-28 14:28:10 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:28:10 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:28:10 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:28:15 | INFO | h11_impl send:467 - 127.0.0.1:55146 - "GET /docs HTTP/1.1" 200
+2021-09-28 14:28:15 | INFO | h11_impl send:467 - 127.0.0.1:55146 - "GET /openapi.json HTTP/1.1" 200
+2021-09-28 14:28:22 | INFO | h11_impl send:467 - 127.0.0.1:55148 - "GET /pypimanager/v1/users/me/ HTTP/1.1" 401
+2021-09-28 14:28:23 | INFO | h11_impl send:467 - 127.0.0.1:55148 - "GET /pypimanager/v1/users/me/ HTTP/1.1" 401
+2021-09-28 14:29:42 | INFO | h11_impl send:467 - 127.0.0.1:55170 - "POST /pypimanager/v1/token HTTP/1.1" 500
+2021-09-28 14:29:42 | ERROR | h11_impl run_asgi:399 - Exception in ASGI application
+
+Traceback (most recent call last):
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 92, in <module>
+    m.run_server()
+    │ └ <function Manager.run_server at 0x7f03c32d88c0>
+    └ <__main__.Manager object at 0x7f03c32d9550>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 87, in run_server
+    server.run()
+    │      └ <function Server.run at 0x7f03c5cb7a70>
+    └ <uvicorn.server.Server object at 0x7f03c6536c90>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/server.py", line 49, in run
+    loop.run_until_complete(self.serve(sockets=sockets))
+    │    │                  │    │             └ None
+    │    │                  │    └ <function Server.serve at 0x7f03c5cb7b00>
+    │    │                  └ <uvicorn.server.Server object at 0x7f03c6536c90>
+    │    └ <function BaseEventLoop.run_until_complete at 0x7f03c5fc1680>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 574, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f03c5fc15f0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 541, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f03c5fc40e0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 1786, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f03c60167a0>
+    └ <Handle <TaskWakeupMethWrapper object at 0x7f03c21cb910>(<Future finis...7f03c214d310>>)>
+  File "/usr/local/lib/python3.7/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskWakeupMethWrapper object at 0x7f03c21cb910>(<Future finis...7f03c214d310>>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskWakeupMethWrapper object at 0x7f03c21cb910>(<Future finis...7f03c214d310>>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskWakeupMethWrapper object at 0x7f03c21cb910>(<Future finis...7f03c214d310>>)>
+> File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/protocols/http/h11_impl.py", line 396, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+                   │   │    │      │    │        │    └ <function RequestResponseCycle.send at 0x7f03c21a27a0>
+                   │   │    │      │    │        └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>
+                   │   │    │      │    └ <function RequestResponseCycle.receive at 0x7f03c21a2830>
+                   │   │    │      └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>
+                   │   │    └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+                   │   └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7f03c3280f10>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/middleware/proxy_headers.py", line 45, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x7f03c50b5950>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7f03c3280f10>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7f03c5d0dc50>
+          └ <fastapi.applications.FastAPI object at 0x7f03c50b5950>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7f03c21a5cb0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x7f03c3379150>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7f03c5d0dc50>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/cors.py", line 86, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:5000', 'connection': 'keep-alive', 'content-length': '77', 'sec-ch-ua': '"Chromium";v="92", " Not...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7f03c21a5cb0>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x7f03c46a0b00>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x7f03c3379150>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/cors.py", line 142, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x7f03c3379150>>, ...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.exceptions.ExceptionMiddleware object at 0x7f03c3358ed0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x7f03c3379150>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7f03c21a5ef0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x7f03c50ab690>
+          └ <starlette.exceptions.ExceptionMiddleware object at 0x7f03c3358ed0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 580, in __call__
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7f03c21a5ef0>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │     └ <function Route.handle at 0x7f03c46d57a0>
+          └ <fastapi.routing.APIRoute object at 0x7f03c46a6210>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 241, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7f03c21a5ef0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f03c21a7ad0>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x7f03c3300200>
+          └ <fastapi.routing.APIRoute object at 0x7f03c46a6210>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 52, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x7f03c21a7d90>
+                     └ <function get_request_handler.<locals>.app at 0x7f03c334ef80>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/routing.py", line 202, in app
+    dependant=dependant, values=values, is_coroutine=is_coroutine
+              │                 │                    └ True
+              │                 └ {'form_data': <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f03c214d310>}
+              └ <fastapi.dependencies.models.Dependant object at 0x7f03c3360090>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/routing.py", line 148, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'form_data': <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f03c214d310>}
+                 │         └ <function login_for_access_token at 0x7f03c33bb290>
+                 └ <fastapi.dependencies.models.Dependant object at 0x7f03c3360090>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/api/routers/user.py", line 49, in login_for_access_token
+    user = authenticate_user(form_data.username, form_data.password)
+           │                 │         │         │         └ 'secret'
+           │                 │         │         └ <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f03c214d310>
+           │                 │         └ 'johndoe'
+           │                 └ <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f03c214d310>
+           └ <function authenticate_user at 0x7f03c33b6cb0>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/api/cruds/user.py", line 40, in authenticate_user
+    user = get_user(username)
+           │        └ 'johndoe'
+           └ <function get_user at 0x7f03c33b6e60>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/api/cruds/user.py", line 36, in get_user
+    return UserSecret(**user_dict)
+           │            └ {'username': 'johndoe', 'full_name': 'John Doe', 'email': 'johndoe@example.com', 'hashed_password': '$2b$12$EixZaYVK1fsbw1Zfb...
+           └ <class 'api.schemas.user.UserSecret'>
+
+  File "pydantic/main.py", line 406, in pydantic.main.BaseModel.__init__
+    raise validation_error
+
+pydantic.error_wrappers.ValidationError: 2 validation errors for UserSecret
+nickname
+  field required (type=value_error.missing)
+full_name
+  extra fields not permitted (type=value_error.extra)
+2021-09-28 14:33:07 | INFO | server shutdown:239 - Shutting down
+2021-09-28 14:33:07 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 14:33:07 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 14:33:07 | INFO | server serve:77 - Finished server process [1620181]
+2021-09-28 14:33:17 | INFO | server serve:64 - Started server process [1620855]
+2021-09-28 14:33:17 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:33:17 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:33:17 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:33:20 | INFO | h11_impl send:467 - 127.0.0.1:55194 - "GET /docs HTTP/1.1" 200
+2021-09-28 14:33:21 | INFO | h11_impl send:467 - 127.0.0.1:55194 - "GET /openapi.json HTTP/1.1" 200
+2021-09-28 14:33:50 | INFO | server shutdown:239 - Shutting down
+2021-09-28 14:33:50 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 14:33:50 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 14:33:50 | INFO | server serve:77 - Finished server process [1620855]
+2021-09-28 14:33:51 | INFO | server serve:64 - Started server process [1620942]
+2021-09-28 14:33:51 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:33:51 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:33:51 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:33:53 | INFO | h11_impl send:467 - 127.0.0.1:55218 - "GET /docs HTTP/1.1" 200
+2021-09-28 14:33:53 | INFO | h11_impl send:467 - 127.0.0.1:55218 - "GET /openapi.json HTTP/1.1" 200
+2021-09-28 14:34:20 | INFO | h11_impl send:467 - 127.0.0.1:55220 - "POST /token HTTP/1.1" 404
+2021-09-28 14:34:33 | INFO | h11_impl send:467 - 127.0.0.1:55230 - "POST /token HTTP/1.1" 404
+2021-09-28 14:34:52 | INFO | server shutdown:239 - Shutting down
+2021-09-28 14:34:52 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 14:34:52 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 14:34:52 | INFO | server serve:77 - Finished server process [1620942]
+2021-09-28 14:34:53 | INFO | server serve:64 - Started server process [1621068]
+2021-09-28 14:34:53 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:34:53 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:34:53 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:34:58 | INFO | h11_impl send:467 - 127.0.0.1:55234 - "GET /docs HTTP/1.1" 200
+2021-09-28 14:34:58 | INFO | h11_impl send:467 - 127.0.0.1:55234 - "GET /openapi.json HTTP/1.1" 200
+2021-09-28 14:35:14 | INFO | h11_impl send:467 - 127.0.0.1:55236 - "POST /token HTTP/1.1" 404
+2021-09-28 14:35:33 | INFO | h11_impl send:467 - 127.0.0.1:55248 - "POST /token HTTP/1.1" 404
+2021-09-28 14:36:46 | INFO | server shutdown:239 - Shutting down
+2021-09-28 14:36:46 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 14:36:46 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 14:36:46 | INFO | server serve:77 - Finished server process [1621068]
+2021-09-28 14:36:46 | INFO | server serve:64 - Started server process [1621297]
+2021-09-28 14:36:46 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:36:46 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:36:46 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:36:57 | INFO | h11_impl send:467 - 127.0.0.1:55250 - "POST /token HTTP/1.1" 404
+2021-09-28 14:37:35 | INFO | h11_impl send:467 - 127.0.0.1:55252 - "POST /pypimanager/v1/token HTTP/1.1" 500
+2021-09-28 14:37:35 | ERROR | h11_impl run_asgi:399 - Exception in ASGI application
+
+Traceback (most recent call last):
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 92, in <module>
+    m.run_server()
+    │ └ <function Manager.run_server at 0x7f5e76e1c950>
+    └ <__main__.Manager object at 0x7f5e76e26310>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 87, in run_server
+    server.run()
+    │      └ <function Server.run at 0x7f5e797ffa70>
+    └ <uvicorn.server.Server object at 0x7f5e7a07ed10>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/server.py", line 49, in run
+    loop.run_until_complete(self.serve(sockets=sockets))
+    │    │                  │    │             └ None
+    │    │                  │    └ <function Server.serve at 0x7f5e797ffb00>
+    │    │                  └ <uvicorn.server.Server object at 0x7f5e7a07ed10>
+    │    └ <function BaseEventLoop.run_until_complete at 0x7f5e79b09680>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 574, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f5e79b095f0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 541, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f5e79b0c0e0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 1786, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f5e79b5e7a0>
+    └ <Handle <TaskWakeupMethWrapper object at 0x7f5e75d03950>(<Future finis...7f5e75d038d0>>)>
+  File "/usr/local/lib/python3.7/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskWakeupMethWrapper object at 0x7f5e75d03950>(<Future finis...7f5e75d038d0>>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskWakeupMethWrapper object at 0x7f5e75d03950>(<Future finis...7f5e75d038d0>>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskWakeupMethWrapper object at 0x7f5e75d03950>(<Future finis...7f5e75d038d0>>)>
+> File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/protocols/http/h11_impl.py", line 396, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+                   │   │    │      │    │        │    └ <function RequestResponseCycle.send at 0x7f5e75cea830>
+                   │   │    │      │    │        └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>
+                   │   │    │      │    └ <function RequestResponseCycle.receive at 0x7f5e75cea8c0>
+                   │   │    │      └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>
+                   │   │    └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+                   │   └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7f5e75d4c8d0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/middleware/proxy_headers.py", line 45, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x7f5e78bfd9d0>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7f5e75d4c8d0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7f5e76eb8fd0>
+          └ <fastapi.applications.FastAPI object at 0x7f5e78bfd9d0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7f5e75cef9e0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x7f5e76eb8f50>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7f5e76eb8fd0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/cors.py", line 86, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:5000', 'connection': 'keep-alive', 'content-length': '77', 'sec-ch-ua': '"Chromium";v="92", " Not...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7f5e75cef9e0>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x7f5e781e8b00>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x7f5e76eb8f50>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/cors.py", line 142, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x7f5e76eb8f50>>, ...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.exceptions.ExceptionMiddleware object at 0x7f5e76eb89d0>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x7f5e76eb8f50>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7f5e75cefc20>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x7f5e78bf4710>
+          └ <starlette.exceptions.ExceptionMiddleware object at 0x7f5e76eb89d0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 580, in __call__
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7f5e75cefc20>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │     └ <function Route.handle at 0x7f5e7821d7a0>
+          └ <fastapi.routing.APIRoute object at 0x7f5e781ee250>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 241, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7f5e75cefc20>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f5e75ce7f90>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x7f5e76e48170>
+          └ <fastapi.routing.APIRoute object at 0x7f5e781ee250>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 52, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x7f5e75ce73d0>
+                     └ <function get_request_handler.<locals>.app at 0x7f5e76e48290>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/routing.py", line 202, in app
+    dependant=dependant, values=values, is_coroutine=is_coroutine
+              │                 │                    └ True
+              │                 └ {'form_data': <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f5e75d038d0>}
+              └ <fastapi.dependencies.models.Dependant object at 0x7f5e76ea9250>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/routing.py", line 148, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'form_data': <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f5e75d038d0>}
+                 │         └ <function login_for_access_token at 0x7f5e76f03a70>
+                 └ <fastapi.dependencies.models.Dependant object at 0x7f5e76ea9250>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/api/routers/user.py", line 49, in login_for_access_token
+    user = authenticate_user(form_data.username, form_data.password)
+           │                 │         │         │         └ 'secret'
+           │                 │         │         └ <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f5e75d038d0>
+           │                 │         └ 'johndoe'
+           │                 └ <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f5e75d038d0>
+           └ <function authenticate_user at 0x7f5e76efee60>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/api/cruds/user.py", line 40, in authenticate_user
+    user = get_user(username)
+           │        └ 'johndoe'
+           └ <function get_user at 0x7f5e76efe7a0>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/api/cruds/user.py", line 36, in get_user
+    return UserSecret(**user_dict)
+           │            └ {'username': 'johndoe', 'full_name': 'John Doe', 'email': 'johndoe@example.com', 'hashed_password': '$2b$12$EixZaYVK1fsbw1Zfb...
+           └ <class 'api.schemas.user.UserSecret'>
+
+  File "pydantic/main.py", line 406, in pydantic.main.BaseModel.__init__
+    raise validation_error
+
+pydantic.error_wrappers.ValidationError: 3 validation errors for UserSecret
+disabled
+  extra fields not permitted (type=value_error.extra)
+email
+  extra fields not permitted (type=value_error.extra)
+full_name
+  extra fields not permitted (type=value_error.extra)
+2021-09-28 14:38:04 | INFO | server shutdown:239 - Shutting down
+2021-09-28 14:38:04 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 14:38:04 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 14:38:04 | INFO | server serve:77 - Finished server process [1621297]
+2021-09-28 14:38:04 | INFO | server serve:64 - Started server process [1621464]
+2021-09-28 14:38:04 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:38:04 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:38:04 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:38:07 | INFO | h11_impl send:467 - 127.0.0.1:55254 - "POST /pypimanager/v1/token HTTP/1.1" 500
+2021-09-28 14:38:07 | ERROR | h11_impl run_asgi:399 - Exception in ASGI application
+
+Traceback (most recent call last):
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 92, in <module>
+    m.run_server()
+    │ └ <function Manager.run_server at 0x7f9c8a8b0950>
+    └ <__main__.Manager object at 0x7f9c8a8ba0d0>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 87, in run_server
+    server.run()
+    │      └ <function Server.run at 0x7f9c8d292a70>
+    └ <uvicorn.server.Server object at 0x7f9c8d33ef50>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/server.py", line 49, in run
+    loop.run_until_complete(self.serve(sockets=sockets))
+    │    │                  │    │             └ None
+    │    │                  │    └ <function Server.serve at 0x7f9c8d292b00>
+    │    │                  └ <uvicorn.server.Server object at 0x7f9c8d33ef50>
+    │    └ <function BaseEventLoop.run_until_complete at 0x7f9c8d59c680>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 574, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7f9c8d59c5f0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 541, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7f9c8d59f0e0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 1786, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7f9c8d5f17a0>
+    └ <Handle <TaskWakeupMethWrapper object at 0x7f9c8978f990>(<Future finis...7f9c89792110>>)>
+  File "/usr/local/lib/python3.7/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskWakeupMethWrapper object at 0x7f9c8978f990>(<Future finis...7f9c89792110>>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskWakeupMethWrapper object at 0x7f9c8978f990>(<Future finis...7f9c89792110>>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskWakeupMethWrapper object at 0x7f9c8978f990>(<Future finis...7f9c89792110>>)>
+> File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/protocols/http/h11_impl.py", line 396, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+                   │   │    │      │    │        │    └ <function RequestResponseCycle.send at 0x7f9c8977b830>
+                   │   │    │      │    │        └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>
+                   │   │    │      │    └ <function RequestResponseCycle.receive at 0x7f9c8977b8c0>
+                   │   │    │      └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>
+                   │   │    └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+                   │   └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7f9c897e4710>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/middleware/proxy_headers.py", line 45, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x7f9c8c683e90>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7f9c897e4710>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7f9c8a94be90>
+          └ <fastapi.applications.FastAPI object at 0x7f9c8c683e90>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7f9c897838c0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x7f9c8a94be10>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7f9c8a94be90>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/cors.py", line 86, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+          │    │               │      │        │                     └ Headers({'host': '127.0.0.1:5000', 'connection': 'keep-alive', 'content-length': '77', 'sec-ch-ua': '"Chromium";v="92", " Not...
+          │    │               │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7f9c897838c0>
+          │    │               │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+          │    │               └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <function CORSMiddleware.simple_response at 0x7f9c8bc7bb00>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x7f9c8a94be10>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/cors.py", line 142, in simple_response
+    await self.app(scope, receive, send)
+          │    │   │      │        └ functools.partial(<bound method CORSMiddleware.send of <starlette.middleware.cors.CORSMiddleware object at 0x7f9c8a94be10>>, ...
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.exceptions.ExceptionMiddleware object at 0x7f9c8a94b890>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x7f9c8a94be10>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7f9c89783b00>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x7f9c8c683f90>
+          └ <starlette.exceptions.ExceptionMiddleware object at 0x7f9c8a94b890>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 580, in __call__
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7f9c89783b00>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │     └ <function Route.handle at 0x7f9c8bcb07a0>
+          └ <fastapi.routing.APIRoute object at 0x7f9c8bc81110>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 241, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7f9c89783b00>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7f9c89777f10>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x7f9c8a8db170>
+          └ <fastapi.routing.APIRoute object at 0x7f9c8bc81110>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 52, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x7f9c8978f2d0>
+                     └ <function get_request_handler.<locals>.app at 0x7f9c8a8db290>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/routing.py", line 202, in app
+    dependant=dependant, values=values, is_coroutine=is_coroutine
+              │                 │                    └ True
+              │                 └ {'form_data': <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f9c89792110>}
+              └ <fastapi.dependencies.models.Dependant object at 0x7f9c8a94bed0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/routing.py", line 148, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'form_data': <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f9c89792110>}
+                 │         └ <function login_for_access_token at 0x7f9c8a995a70>
+                 └ <fastapi.dependencies.models.Dependant object at 0x7f9c8a94bed0>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/api/routers/user.py", line 49, in login_for_access_token
+    user = authenticate_user(form_data.username, form_data.password)
+           │                 │         │         │         └ 'secret'
+           │                 │         │         └ <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f9c89792110>
+           │                 │         └ 'johndoe'
+           │                 └ <fastapi.security.oauth2.OAuth2PasswordRequestForm object at 0x7f9c89792110>
+           └ <function authenticate_user at 0x7f9c8a991e60>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/api/cruds/user.py", line 40, in authenticate_user
+    user = get_user(username)
+           │        └ 'johndoe'
+           └ <function get_user at 0x7f9c8a9917a0>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/api/cruds/user.py", line 36, in get_user
+    return UserSecret(**user_dict)
+           │            └ {'username': 'johndoe', 'nickname': 'John Doe', 'email': 'johndoe@example.com', 'hashed_password': '$2b$12$EixZaYVK1fsbw1ZfbX...
+           └ <class 'api.schemas.user.UserSecret'>
+
+  File "pydantic/main.py", line 406, in pydantic.main.BaseModel.__init__
+    raise validation_error
+
+pydantic.error_wrappers.ValidationError: 3 validation errors for UserSecret
+disabled
+  extra fields not permitted (type=value_error.extra)
+email
+  extra fields not permitted (type=value_error.extra)
+nickname
+  extra fields not permitted (type=value_error.extra)
+2021-09-28 14:38:36 | INFO | server shutdown:239 - Shutting down
+2021-09-28 14:38:36 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 14:38:36 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 14:38:36 | INFO | server serve:77 - Finished server process [1621464]
+2021-09-28 14:38:36 | INFO | server serve:64 - Started server process [1621543]
+2021-09-28 14:38:36 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:38:36 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:38:36 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:38:39 | INFO | h11_impl send:467 - 127.0.0.1:55264 - "POST /pypimanager/v1/token HTTP/1.1" 200
+2021-09-28 14:39:02 | INFO | h11_impl send:467 - 127.0.0.1:55272 - "GET /pypimanager/v1/users/me/ HTTP/1.1" 401
+2021-09-28 14:39:05 | INFO | h11_impl send:467 - 127.0.0.1:55272 - "GET /pypimanager/v1/users/me/ HTTP/1.1" 401
+2021-09-28 14:39:14 | INFO | h11_impl send:467 - 127.0.0.1:55274 - "GET /pypimanager/v1/users/me/items/ HTTP/1.1" 401
+2021-09-28 14:51:35 | INFO | server shutdown:239 - Shutting down
+2021-09-28 14:51:35 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 14:51:35 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 14:51:35 | INFO | server serve:77 - Finished server process [1621543]
+2021-09-28 14:56:28 | INFO | server serve:64 - Started server process [1623672]
+2021-09-28 14:56:28 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:56:28 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:56:28 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:56:39 | INFO | h11_impl send:467 - 127.0.0.1:55380 - "GET /docs HTTP/1.1" 200
+2021-09-28 14:56:39 | INFO | h11_impl send:467 - 127.0.0.1:55380 - "GET /openapi.json HTTP/1.1" 200
+2021-09-28 14:56:47 | INFO | h11_impl send:467 - 127.0.0.1:55382 - "POST /token HTTP/1.1" 200
+2021-09-28 14:57:00 | INFO | h11_impl send:467 - 127.0.0.1:55394 - "GET /users/me/ HTTP/1.1" 500
+2021-09-28 14:57:00 | ERROR | h11_impl run_asgi:399 - Exception in ASGI application
+
+Traceback (most recent call last):
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 108, in <module>
+    m.run_server()
+    │ └ <function Manager.run_server at 0x7fe145338d40>
+    └ <__main__.Manager object at 0x7fe145339850>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 103, in run_server
+    server.run()
+    │      └ <function Server.run at 0x7fe147d1c4d0>
+    └ <uvicorn.server.Server object at 0x7fe14536c110>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/server.py", line 49, in run
+    loop.run_until_complete(self.serve(sockets=sockets))
+    │    │                  │    │             └ None
+    │    │                  │    └ <function Server.serve at 0x7fe147d1c560>
+    │    │                  └ <uvicorn.server.Server object at 0x7fe14536c110>
+    │    └ <function BaseEventLoop.run_until_complete at 0x7fe147fa09e0>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 574, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7fe147fa0950>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 541, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7fe147fa2440>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.7/asyncio/base_events.py", line 1786, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7fe147ff8b00>
+    └ <Handle <TaskStepMethWrapper object at 0x7fe144202450>()>
+  File "/usr/local/lib/python3.7/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x7fe144202450>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x7fe144202450>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x7fe144202450>()>
+> File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/protocols/http/h11_impl.py", line 396, in run_asgi
+    result = await app(self.scope, self.receive, self.send)
+                   │   │    │      │    │        │    └ <function RequestResponseCycle.send at 0x7fe144203c20>
+                   │   │    │      │    │        └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>
+                   │   │    │      │    └ <function RequestResponseCycle.receive at 0x7fe144203cb0>
+                   │   │    │      └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>
+                   │   │    └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+                   │   └ <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7fe144266dd0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/uvicorn/middleware/proxy_headers.py", line 45, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>>
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+                 │    └ <fastapi.applications.FastAPI object at 0x7fe14711ab10>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x7fe144266dd0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/applications.py", line 199, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>>
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/applications.py", line 112, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7fe1453dc1d0>
+          └ <fastapi.applications.FastAPI object at 0x7fe14711ab10>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/errors.py", line 181, in __call__
+    raise exc from None
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/errors.py", line 159, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7fe14421d0e0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x7fe1453dc150>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x7fe1453dc1d0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/middleware/cors.py", line 78, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x7fe14421d0e0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <starlette.exceptions.ExceptionMiddleware object at 0x7fe1453c6090>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x7fe1453dc150>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/exceptions.py", line 82, in __call__
+    raise exc from None
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/exceptions.py", line 71, in __call__
+    await self.app(scope, receive, sender)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7fe14421d290>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <fastapi.routing.APIRouter object at 0x7fe147e6b150>
+          └ <starlette.exceptions.ExceptionMiddleware object at 0x7fe1453c6090>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 580, in __call__
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7fe14421d290>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │     └ <function Route.handle at 0x7fe146739830>
+          └ <fastapi.routing.APIRoute object at 0x7fe1453dcf50>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 241, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ExceptionMiddleware.__call__.<locals>.sender at 0x7fe14421d290>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x7fe144223210>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.1'}, 'http_version': '1.1', 'server': ('127.0.0.1', 5000), 'cl...
+          │    └ <function request_response.<locals>.app at 0x7fe1453de4d0>
+          └ <fastapi.routing.APIRoute object at 0x7fe1453dcf50>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/starlette/routing.py", line 52, in app
+    response = await func(request)
+                     │    └ <starlette.requests.Request object at 0x7fe1442236d0>
+                     └ <function get_request_handler.<locals>.app at 0x7fe1453de440>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/routing.py", line 195, in app
+    dependency_overrides_provider=dependency_overrides_provider,
+                                  └ <fastapi.applications.FastAPI object at 0x7fe14711ab10>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/fastapi/dependencies/utils.py", line 548, in solve_dependencies
+    solved = await call(**sub_values)
+                   │      └ {'current_user': UserSecret(username='johndoe', hashed_password='$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW')}
+                   └ <function get_current_active_user at 0x7fe14541bd40>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/api/routers/user.py", line 42, in get_current_active_user
+    if current_user.disabled:
+       └ UserSecret(username='johndoe', hashed_password='$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW')
+
+AttributeError: 'UserSecret' object has no attribute 'disabled'
+2021-09-28 14:57:57 | INFO | server shutdown:239 - Shutting down
+2021-09-28 14:57:57 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 14:57:57 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 14:57:57 | INFO | server serve:77 - Finished server process [1623672]
+2021-09-28 14:57:58 | INFO | server serve:64 - Started server process [1623865]
+2021-09-28 14:57:58 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:57:58 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:57:58 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:58:01 | INFO | h11_impl send:467 - 127.0.0.1:55396 - "GET /users/me/ HTTP/1.1" 200
+2021-09-28 14:58:11 | INFO | h11_impl send:467 - 127.0.0.1:55402 - "GET /users/me/items/ HTTP/1.1" 200
+2021-09-28 14:59:07 | INFO | server shutdown:239 - Shutting down
+2021-09-28 14:59:07 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 14:59:07 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 14:59:07 | INFO | server serve:77 - Finished server process [1623865]
+2021-09-28 14:59:08 | INFO | server serve:64 - Started server process [1624019]
+2021-09-28 14:59:08 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 14:59:08 | INFO | on startup:38 - Application startup complete.
+2021-09-28 14:59:08 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 14:59:10 | INFO | h11_impl send:467 - 127.0.0.1:55412 - "GET /docs HTTP/1.1" 200
+2021-09-28 14:59:10 | INFO | h11_impl send:467 - 127.0.0.1:55412 - "GET /openapi.json HTTP/1.1" 200
+2021-09-28 14:59:23 | INFO | h11_impl send:467 - 127.0.0.1:55414 - "POST /token HTTP/1.1" 200
+2021-09-28 14:59:30 | INFO | h11_impl send:467 - 127.0.0.1:55426 - "GET /users/me/ HTTP/1.1" 200
+2021-09-28 14:59:42 | INFO | h11_impl send:467 - 127.0.0.1:55428 - "GET /users/me/items/ HTTP/1.1" 200
+2021-09-28 15:00:41 | INFO | server shutdown:239 - Shutting down
+2021-09-28 15:00:41 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 15:00:41 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 15:00:41 | INFO | server serve:77 - Finished server process [1624019]
+2021-09-28 15:03:02 | INFO | manager __load_role_map__:68 - 共计3个角色配置
+2021-09-28 15:03:02 | INFO | server serve:64 - Started server process [1624516]
+2021-09-28 15:03:02 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 15:03:02 | INFO | on startup:38 - Application startup complete.
+2021-09-28 15:03:02 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 15:03:26 | INFO | server shutdown:239 - Shutting down
+2021-09-28 15:03:26 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 15:03:26 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 15:03:26 | INFO | server serve:77 - Finished server process [1624516]
+2021-09-28 15:03:31 | INFO | manager __load_role_map__:68 - 共计3个角色配置
+2021-09-28 15:03:31 | INFO | server serve:64 - Started server process [1624583]
+2021-09-28 15:03:31 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 15:03:31 | INFO | on startup:38 - Application startup complete.
+2021-09-28 15:03:31 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)
+2021-09-28 15:05:59 | INFO | server shutdown:239 - Shutting down
+2021-09-28 15:05:59 | INFO | on shutdown:43 - Waiting for application shutdown.
+2021-09-28 15:05:59 | INFO | on shutdown:46 - Application shutdown complete.
+2021-09-28 15:05:59 | INFO | server serve:77 - Finished server process [1624583]
+2021-09-28 15:06:00 | INFO | manager __load_role_map__:69 - 共计3个角色配置
+2021-09-28 15:06:00 | ERROR | manager __load_fixtures_auth_users__:87 - An error has been caught in function '__load_fixtures_auth_users__', process 'MainProcess' (1624887), thread 'MainThread' (140586416574848):
+Traceback (most recent call last):
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 110, in <module>
+    m.run_server()
+    │ └ <function Manager.run_server at 0x7fdccf321e60>
+    └ <__main__.Manager object at 0x7fdccf320a50>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 96, in run_server
+    m.__load_fixtures_auth_users__()
+    │ └ <function Manager.__load_fixtures_auth_users__ at 0x7fdccf321b00>
+    └ <__main__.Manager object at 0x7fdccf320a50>
+
+> File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 87, in __load_fixtures_auth_users__
+    self.db.insert_or_update(User, **user)
+    │    │  │                │       └ {'username': 'X2590', 'nickname': '郭群', 'email': 'qguo@njsecnet.com', 'role': '超级管理员', 'password': '$2b$12$CfQ3uUc8hI1Xfei5Pj...
+    │    │  │                └ <class 'model.models.User'>
+    │    │  └ <function DB.insert_or_update at 0x7fdcd10f5050>
+    │    └ <utils.db.DB object at 0x7fdccf320bd0>
+    └ <__main__.Manager object at 0x7fdccf320a50>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/utils/db.py", line 55, in insert_or_update
+    self.session.execute(update_stmt)
+    │    │       │       └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    │    │       └ <function Session.execute at 0x7fdcd12388c0>
+    │    └ <sqlalchemy.orm.session.Session object at 0x7fdccf2ce090>
+    └ <utils.db.DB object at 0x7fdccf320bd0>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1677, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             │    │           │          │             └ immutabledict({'future_result': True})
+             │    │           │          └ None
+             │    │           └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+             │    └ <function Connection._execute_20 at 0x7fdcd158c200>
+             └ <sqlalchemy.future.engine.Connection object at 0x7fdcce2bf490>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1582, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           │    │     │             │               └ immutabledict({'future_result': True})
+           │    │     │             └ immutabledict({})
+           │    │     └ ({},)
+           │    └ <sqlalchemy.future.engine.Connection object at 0x7fdcce2bf490>
+           └ <bound method ClauseElement._execute_on_connection of <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 325, in _execute_on_connection
+    self, multiparams, params, execution_options
+    │     │            │       └ immutabledict({'future_result': True})
+    │     │            └ immutabledict({})
+    │     └ ({},)
+    └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1449, in _execute_clauseelement
+    linting=self.dialect.compiler_linting | compiler.WARN_LINTING,
+            │    │       │                  │        └ symbol('WARN_LINTING')
+            │    │       │                  └ <module 'sqlalchemy.sql.compiler' from '/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypima...
+            │    │       └ 1
+            │    └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+            └ <sqlalchemy.future.engine.Connection object at 0x7fdcce2bf490>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 565, in _compile_w_cache
+    **kw
+      └ {'linting': 3}
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 581, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+           │       │                  │        │       └ {'cache_key': None, 'column_keys': [], 'for_executemany': False, 'schema_translate_map': None, 'linting': 3}
+           │       │                  │        └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+           │       │                  └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+           │       └ <class 'sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb'>
+           └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 766, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+    │        │        │     │        │            └ {'schema_translate_map': None}
+    │        │        │     │        └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    │        │        │     └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+    │        │        └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+    │        └ <function Compiled.__init__ at 0x7fdcd15f93b0>
+    └ <class 'sqlalchemy.sql.compiler.Compiled'>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 455, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+    │             │    │       │    │            └ immutabledict({})
+    │             │    │       │    └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    │             │    │       └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+    │             │    └ <function Compiled.process at 0x7fdcd15f97a0>
+    │             └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+    └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 490, in process
+    return obj._compiler_dispatch(self, **kwargs)
+           │   │                  │       └ {}
+           │   │                  └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+           │   └ <function _generate_compiler_dispatch.<locals>._compiler_dispatch at 0x7fdcd15e88c0>
+           └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/visitors.py", line 81, in _compiler_dispatch
+    return meth(self, **kw)
+           │    │       └ {}
+           │    └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+           └ <bound method SQLCompiler.visit_insert of <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 3510, in visit_insert
+    self, insert_stmt, compile_state, **kw
+    │     │            │                └ {}
+    │     │            └ <sqlalchemy.sql.dml.InsertDMLState object at 0x7fdcce2044b0>
+    │     └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/crud.py", line 170, in _get_crud_params
+    % (", ".join("%s" % (c,) for c in check))
+                                      └ {'password'}
+
+sqlalchemy.exc.CompileError: Unconsumed column names: password
+2021-09-28 15:06:00 | ERROR | manager run_server:96 - An error has been caught in function 'run_server', process 'MainProcess' (1624887), thread 'MainThread' (140586416574848):
+Traceback (most recent call last):
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 110, in <module>
+    m.run_server()
+    │ └ <function Manager.run_server at 0x7fdccf321e60>
+    └ <__main__.Manager object at 0x7fdccf320a50>
+
+> File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 96, in run_server
+    m.__load_fixtures_auth_users__()
+    │ └ <function Manager.__load_fixtures_auth_users__ at 0x7fdccf321b00>
+    └ <__main__.Manager object at 0x7fdccf320a50>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 87, in __load_fixtures_auth_users__
+    self.db.insert_or_update(User, **user)
+    │    │  │                │       └ {'username': 'X2590', 'nickname': '郭群', 'email': 'qguo@njsecnet.com', 'role': '超级管理员', 'password': '$2b$12$CfQ3uUc8hI1Xfei5Pj...
+    │    │  │                └ <class 'model.models.User'>
+    │    │  └ <function DB.insert_or_update at 0x7fdcd10f5050>
+    │    └ <utils.db.DB object at 0x7fdccf320bd0>
+    └ <__main__.Manager object at 0x7fdccf320a50>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/utils/db.py", line 55, in insert_or_update
+    self.session.execute(update_stmt)
+    │    │       │       └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    │    │       └ <function Session.execute at 0x7fdcd12388c0>
+    │    └ <sqlalchemy.orm.session.Session object at 0x7fdccf2ce090>
+    └ <utils.db.DB object at 0x7fdccf320bd0>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1677, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             │    │           │          │             └ immutabledict({'future_result': True})
+             │    │           │          └ None
+             │    │           └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+             │    └ <function Connection._execute_20 at 0x7fdcd158c200>
+             └ <sqlalchemy.future.engine.Connection object at 0x7fdcce2bf490>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1582, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           │    │     │             │               └ immutabledict({'future_result': True})
+           │    │     │             └ immutabledict({})
+           │    │     └ ({},)
+           │    └ <sqlalchemy.future.engine.Connection object at 0x7fdcce2bf490>
+           └ <bound method ClauseElement._execute_on_connection of <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 325, in _execute_on_connection
+    self, multiparams, params, execution_options
+    │     │            │       └ immutabledict({'future_result': True})
+    │     │            └ immutabledict({})
+    │     └ ({},)
+    └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1449, in _execute_clauseelement
+    linting=self.dialect.compiler_linting | compiler.WARN_LINTING,
+            │    │       │                  │        └ symbol('WARN_LINTING')
+            │    │       │                  └ <module 'sqlalchemy.sql.compiler' from '/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypima...
+            │    │       └ 1
+            │    └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+            └ <sqlalchemy.future.engine.Connection object at 0x7fdcce2bf490>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 565, in _compile_w_cache
+    **kw
+      └ {'linting': 3}
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 581, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+           │       │                  │        │       └ {'cache_key': None, 'column_keys': [], 'for_executemany': False, 'schema_translate_map': None, 'linting': 3}
+           │       │                  │        └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+           │       │                  └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+           │       └ <class 'sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb'>
+           └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 766, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+    │        │        │     │        │            └ {'schema_translate_map': None}
+    │        │        │     │        └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    │        │        │     └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+    │        │        └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+    │        └ <function Compiled.__init__ at 0x7fdcd15f93b0>
+    └ <class 'sqlalchemy.sql.compiler.Compiled'>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 455, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+    │             │    │       │    │            └ immutabledict({})
+    │             │    │       │    └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    │             │    │       └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+    │             │    └ <function Compiled.process at 0x7fdcd15f97a0>
+    │             └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+    └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 490, in process
+    return obj._compiler_dispatch(self, **kwargs)
+           │   │                  │       └ {}
+           │   │                  └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+           │   └ <function _generate_compiler_dispatch.<locals>._compiler_dispatch at 0x7fdcd15e88c0>
+           └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/visitors.py", line 81, in _compiler_dispatch
+    return meth(self, **kw)
+           │    │       └ {}
+           │    └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+           └ <bound method SQLCompiler.visit_insert of <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 3510, in visit_insert
+    self, insert_stmt, compile_state, **kw
+    │     │            │                └ {}
+    │     │            └ <sqlalchemy.sql.dml.InsertDMLState object at 0x7fdcce2044b0>
+    │     └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/crud.py", line 170, in _get_crud_params
+    % (", ".join("%s" % (c,) for c in check))
+                                      └ {'password'}
+
+sqlalchemy.exc.CompileError: Unconsumed column names: password
+2021-09-28 15:06:00 | ERROR | manager <module>:110 - An error has been caught in function '<module>', process 'MainProcess' (1624887), thread 'MainThread' (140586416574848):
+Traceback (most recent call last):
+
+> File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 110, in <module>
+    m.run_server()
+    │ └ <function Manager.run_server at 0x7fdccf321e60>
+    └ <__main__.Manager object at 0x7fdccf320a50>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 96, in run_server
+    m.__load_fixtures_auth_users__()
+    │ └ <function Manager.__load_fixtures_auth_users__ at 0x7fdccf321b00>
+    └ <__main__.Manager object at 0x7fdccf320a50>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/manager.py", line 87, in __load_fixtures_auth_users__
+    self.db.insert_or_update(User, **user)
+    │    │  │                │       └ {'username': 'X2590', 'nickname': '郭群', 'email': 'qguo@njsecnet.com', 'role': '超级管理员', 'password': '$2b$12$CfQ3uUc8hI1Xfei5Pj...
+    │    │  │                └ <class 'model.models.User'>
+    │    │  └ <function DB.insert_or_update at 0x7fdcd10f5050>
+    │    └ <utils.db.DB object at 0x7fdccf320bd0>
+    └ <__main__.Manager object at 0x7fdccf320a50>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/utils/db.py", line 55, in insert_or_update
+    self.session.execute(update_stmt)
+    │    │       │       └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    │    │       └ <function Session.execute at 0x7fdcd12388c0>
+    │    └ <sqlalchemy.orm.session.Session object at 0x7fdccf2ce090>
+    └ <utils.db.DB object at 0x7fdccf320bd0>
+
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/orm/session.py", line 1677, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+             │    │           │          │             └ immutabledict({'future_result': True})
+             │    │           │          └ None
+             │    │           └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+             │    └ <function Connection._execute_20 at 0x7fdcd158c200>
+             └ <sqlalchemy.future.engine.Connection object at 0x7fdcce2bf490>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1582, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+           │    │     │             │               └ immutabledict({'future_result': True})
+           │    │     │             └ immutabledict({})
+           │    │     └ ({},)
+           │    └ <sqlalchemy.future.engine.Connection object at 0x7fdcce2bf490>
+           └ <bound method ClauseElement._execute_on_connection of <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 325, in _execute_on_connection
+    self, multiparams, params, execution_options
+    │     │            │       └ immutabledict({'future_result': True})
+    │     │            └ immutabledict({})
+    │     └ ({},)
+    └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/engine/base.py", line 1449, in _execute_clauseelement
+    linting=self.dialect.compiler_linting | compiler.WARN_LINTING,
+            │    │       │                  │        └ symbol('WARN_LINTING')
+            │    │       │                  └ <module 'sqlalchemy.sql.compiler' from '/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypima...
+            │    │       └ 1
+            │    └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+            └ <sqlalchemy.future.engine.Connection object at 0x7fdcce2bf490>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 565, in _compile_w_cache
+    **kw
+      └ {'linting': 3}
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/elements.py", line 581, in _compiler
+    return dialect.statement_compiler(dialect, self, **kw)
+           │       │                  │        │       └ {'cache_key': None, 'column_keys': [], 'for_executemany': False, 'schema_translate_map': None, 'linting': 3}
+           │       │                  │        └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+           │       │                  └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+           │       └ <class 'sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb'>
+           └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 766, in __init__
+    Compiled.__init__(self, dialect, statement, **kwargs)
+    │        │        │     │        │            └ {'schema_translate_map': None}
+    │        │        │     │        └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    │        │        │     └ <sqlalchemy.dialects.mysql.pymysql.MySQLDialect_pymysql object at 0x7fdccf2d83d0>
+    │        │        └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+    │        └ <function Compiled.__init__ at 0x7fdcd15f93b0>
+    └ <class 'sqlalchemy.sql.compiler.Compiled'>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 455, in __init__
+    self.string = self.process(self.statement, **compile_kwargs)
+    │             │    │       │    │            └ immutabledict({})
+    │             │    │       │    └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    │             │    │       └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+    │             │    └ <function Compiled.process at 0x7fdcd15f97a0>
+    │             └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+    └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 490, in process
+    return obj._compiler_dispatch(self, **kwargs)
+           │   │                  │       └ {}
+           │   │                  └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+           │   └ <function _generate_compiler_dispatch.<locals>._compiler_dispatch at 0x7fdcd15e88c0>
+           └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/visitors.py", line 81, in _compiler_dispatch
+    return meth(self, **kw)
+           │    │       └ {}
+           │    └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+           └ <bound method SQLCompiler.visit_insert of <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/compiler.py", line 3510, in visit_insert
+    self, insert_stmt, compile_state, **kw
+    │     │            │                └ {}
+    │     │            └ <sqlalchemy.sql.dml.InsertDMLState object at 0x7fdcce2044b0>
+    │     └ <sqlalchemy.dialects.mysql.dml.Insert object at 0x7fdcce2bf710>
+    └ <sqlalchemy.dialects.mysql.mysqldb.MySQLCompiler_mysqldb object at 0x7fdcce2bf350>
+  File "/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-backend/pypimanager_backend/venv/lib/python3.7/site-packages/sqlalchemy/sql/crud.py", line 170, in _get_crud_params
+    % (", ".join("%s" % (c,) for c in check))
+                                      └ {'password'}
+
+sqlalchemy.exc.CompileError: Unconsumed column names: password
+2021-09-28 15:06:12 | INFO | manager __load_role_map__:69 - 共计3个角色配置
+2021-09-28 15:06:13 | INFO | server serve:64 - Started server process [1624924]
+2021-09-28 15:06:13 | INFO | on startup:26 - Waiting for application startup.
+2021-09-28 15:06:13 | INFO | on startup:38 - Application startup complete.
+2021-09-28 15:06:13 | INFO | server _log_started_message:204 - Uvicorn running on http://0.0.0.0:5000 (Press CTRL+C to quit)

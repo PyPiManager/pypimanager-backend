@@ -1,0 +1,20 @@
+[
+  {
+    "username": "X2590",
+    "nickname": "郭群",
+    "email": "qguo@njsecnet.com",
+    "role": "超级管理员"
+  },
+  {
+    "username": "X2591",
+    "nickname": "姜越",
+    "email": "yjiang@njsecnet.com",
+    "role": "包管理员"
+  },
+  {
+    "username": "X2592",
+    "nickname": "周琳",
+    "email": "yzhou@njsecnet.com",
+    "role": "用户"
+  }
+]

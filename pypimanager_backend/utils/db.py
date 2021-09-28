@@ -46,7 +46,7 @@ class DB:
         使用SQL的ON DUPLICATE KEY UPDATE语法
 
         Args:
-            model_name (str): 模型类名
+            model_name （Any): 模型类名
         """
         if not kwargs:
             return

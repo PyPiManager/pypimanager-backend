@@ -22,7 +22,7 @@ from settings import SQLALCHEMY_URL, SQLALCHEMY_ECHO, SQLALCHEMY_AUTO_FLUSH, SQL
 
 
 router = APIRouter(
-    prefix='pypimanager/v1',
+    # prefix='/pypimanager/v1',
     responses={404: {'description': 'Not Found'}}
 )
 

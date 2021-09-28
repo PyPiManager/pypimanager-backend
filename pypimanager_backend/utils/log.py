@@ -40,7 +40,7 @@ class LogManager:
             'handlers': [
                 {
                     'sink': pathlib.Path(base_path).joinpath(log_path).joinpath(log_name),
-                    'colorze': False,
+                    'colorize': False,
                     'format': log_format,
                     'level': file_log_level,
                     'rotation': rotation,
@@ -51,10 +51,9 @@ class LogManager:
                 {
                     'sink': sys.stdout,
                     'format': log_format,
-                    'colorze': True,
+                    'colorize': True,
                     'level': console_log_level,
-                    'enqueue': enqueue,
-                    'encoding': log_encode
+                    'enqueue': enqueue
                 }
             ]
         }

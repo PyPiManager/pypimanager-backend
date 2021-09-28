@@ -19,16 +19,20 @@ from pydantic import BaseModel, Field, Extra
 from model.fixture import USER_ROLE_NAME
 
 
-class User(BaseModel, extra=Extra.forbid):
+class UserBase(BaseModel):
     """用户信息数据结构定义"""
     username: str = Field(..., description='用户名')
-    nickname: str = Field(..., description='用户昵称')
-    email: str = Field(..., description='用户邮箱')
-    role: Optional[str] = Field(USER_ROLE_NAME, description='用户角色')
     disabled: Optional[bool] = Field(False, description='用户是否被禁用')
 
 
-class UserSecret(User):
+class UserManage(UserBase, extra=Extra.forbid):
+    """管理用户信息数据结构定义"""
+    nickname: str = Field(..., description='用户昵称')
+    email: str = Field(..., description='用户邮箱')
+    role: Optional[str] = Field(USER_ROLE_NAME, description='用户角色')
+
+
+class UserSecret(UserBase):
     """用户密码hash"""
     hashed_password: str = Field(..., description='用户密码hash值')
 
