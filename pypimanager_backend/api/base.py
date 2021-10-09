@@ -43,7 +43,7 @@ def get_db():
 # openssl rand -hex 32
 SECRET_KEY = "e9c39eb9f9e900e0acfe97681b6dbbdec23d830fcb62b9e57a0470f469247f47"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7
+ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

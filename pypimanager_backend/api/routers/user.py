@@ -12,7 +12,7 @@ from jose import JWTError, jwt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 
-from api.base import oauth2_scheme, SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES, create_access_token, router, get_db
+from api.base import oauth2_scheme, create_access_token, router, get_db, SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
 from api.schemas.base_schema import ResponseBase
 from api.schemas.user import TokenData, UserManage, Token
 from api.cruds.user import get_user_info, authenticate_user
@@ -38,6 +38,11 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: DB = Depends
     if user is None:
         raise credentials_exception
     return user
+
+
+async def get_current_user_token(token: str = Depends(oauth2_scheme)):
+    _ = await get_current_user(token)
+    return token
 
 
 async def get_current_active_user(current_user: UserManage = Depends(get_current_user)):
@@ -71,4 +76,3 @@ async def read_user_info(current_user: UserManage = Depends(get_current_active_u
         data=user_info
     ).dict()
     return resp_data
-
