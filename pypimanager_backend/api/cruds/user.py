@@ -42,9 +42,16 @@ def get_user_secret(username: str, db: DB):
     Returns:
 
     """
-    user_dict = db.session.query(User).filter(User.username == username).one()
-    if user_dict:
-        return UserSecret(**jsonable_encoder(user_dict))
+    try:
+        user_dict = db.session.query(User).filter(User.username == username).one()
+    except Exception as err:
+        logger.error(f'查询用户信息失败, username: {username}, 错误信息: {err}')
+        return None
+    else:
+        if user_dict:
+            return UserSecret(**jsonable_encoder(user_dict))
+        else:
+            return None
 
 
 def authenticate_user(username: str, password: str, db: DB):
