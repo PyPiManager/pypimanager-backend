@@ -26,9 +26,16 @@ def get_user_info(username: str, db: DB):
     Returns:
 
     """
-    user_dict = db.session.query(User).filter(User.username == username).one()
-    if user_dict:
-        return UserManage(**jsonable_encoder(user_dict))
+    try:
+        user_dict = db.session.query(User).filter(User.username == username).one()
+    except Exception as err:
+        logger.error(f'获取用户信息失败, username: {username}, 错误信息: {err}')
+        return None
+    else:
+        if user_dict:
+            return UserManage(**jsonable_encoder(user_dict))
+        else:
+            return None
 
 
 @logger.catch(reraise=True)
@@ -68,6 +75,7 @@ def authenticate_user(username: str, password: str, db: DB):
     user = get_user_secret(username, db=db)
     if not user:
         return False
-    if not verify_password(password, user.hashed_password):
+    elif not verify_password(password, user.hashed_password):
         return False
-    return user
+    else:
+        return user
