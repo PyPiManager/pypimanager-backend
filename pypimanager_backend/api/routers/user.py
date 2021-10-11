@@ -18,6 +18,7 @@ from api.schemas.base_schema import ResponseBase
 from api.schemas.user import TokenData, UserManage, Token
 from api.cruds.user import get_user_info, authenticate_user, update_user_secret
 from utils.db import DB
+from model.fixture import ADMIN_ROLE_NAME
 from utils.log import logger
 
 
@@ -81,7 +82,7 @@ async def read_user_info(current_user: UserManage = Depends(get_current_active_u
 
 @router.post("/password", response_model=ResponseBase)
 async def update_user_password(username: str = Form(..., description='用户名称'),
-                               old_pass: str = Form(..., description='旧密码'),
+                               old_pass: str = Form(None, description='旧密码'),
                                new_pass: str = Form(..., description='新密码'),
                                current_user: UserManage = Depends(get_current_active_user),
                                db: DB = Depends(get_db)):
@@ -104,7 +105,7 @@ async def update_user_password(username: str = Form(..., description='用户名�
     current_user_info = get_user_info(current_user.username, db=db)
     current_role = current_user_info.role
     # 如果是超管，可以修改任何用户的密码
-    if current_role == "ADMIN_ROLE_NAME":
+    if current_role == ADMIN_ROLE_NAME:
         # 更新密码，让用户重新登录
         if update_user_secret(username=username, hashed_password=get_password_hash(password=new_pass), db=db):
             resp_data.data = True
