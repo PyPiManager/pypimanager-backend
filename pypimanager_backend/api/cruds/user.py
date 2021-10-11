@@ -79,3 +79,26 @@ def authenticate_user(username: str, password: str, db: DB):
         return False
     else:
         return user
+
+
+def update_user_secret(username: str, hashed_password: str, db: DB):
+    """
+    更新用户密码hash
+    Args:
+        username:
+        hashed_password:
+        db:
+
+    Returns:
+
+    """
+    try:
+        user = db.session.query(User).filter(User.username == username).one()
+        user.hashed_password = hashed_password
+        db.session.flush()
+        db.session.commit()
+    except Exception as err:
+        logger.error(f'查询用户信息失败, username: {username}, 错误信息: {err}')
+        return False
+    else:
+        return True
