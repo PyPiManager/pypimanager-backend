@@ -11,7 +11,8 @@ from fastapi.encoders import jsonable_encoder
 from utils.log import logger
 from utils.db import DB
 from model.models import User
-from api.schemas.user import UserSecret, UserManage
+from model.fixture import USER_ROLE_NAME
+from api.schemas.user import UserSecret, UserManage, UserInfo
 from api.base import verify_password
 
 
@@ -34,6 +35,33 @@ def get_user_info(username: str, db: DB):
     else:
         if user_dict:
             return UserManage(**jsonable_encoder(user_dict))
+        else:
+            return None
+
+
+@logger.catch(reraise=True)
+def get_all_user_info(db: DB):
+    """
+    获取全部用户信息
+    Args:
+        db:
+
+    Returns:
+
+    """
+    try:
+        all_user_data = db.session.query(User).all()
+    except Exception as err:
+        logger.error(f'获取全部用户信息失败, 错误信息: {err}')
+        return None
+    else:
+        if all_user_data:
+            data = list()
+            for index, user in enumerate(all_user_data):
+                each_user_data = UserInfo(**jsonable_encoder(user))
+                each_user_data.index = index + 1
+                data.append(each_user_data)
+            return data
         else:
             return None
 
@@ -102,3 +130,68 @@ def update_user_secret(username: str, hashed_password: str, db: DB):
         return False
     else:
         return True
+
+
+@logger.catch(reraise=True)
+def update_user_privilege(username: str, role: str, db: DB):
+    """
+    更新用户角色以赋予新的权限
+    Args:
+        username:
+        role:
+        db:
+
+    Returns:
+
+    """
+    try:
+        user = db.session.query(User).filter(User.username == username).one()
+        print(f'input role: {role} current role: {user.role}')
+        user.role = role
+        db.session.flush()
+        db.session.commit()
+    except Exception as err:
+        logger.error(f'查询用户信息失败, username: {username}, 错误信息: {err}')
+        return False
+    else:
+        return True
+
+
+@logger.catch(reraise=True)
+def add_new_user(db: DB,
+                 username: str,
+                 nickname: str,
+                 email: str,
+                 hashed_password: str,
+                 role: str = USER_ROLE_NAME
+                 ):
+    """
+    增加新用户
+    Args:
+        db:
+        username:
+        nickname:
+        email:
+        hashed_password:
+        role:
+
+    Returns:
+
+    """
+    new_user_data = {
+        "username": username,
+        "nickname": nickname,
+        "email": email,
+        "hashed_password": hashed_password,
+        "role": role
+    }
+    try:
+        db.insert_or_update(User, **new_user_data)
+        db.session.commit()
+    except Exception as err:
+        logger.error(f"新增用户失败: {err}")
+        db.session.rollback()
+        return False
+    else:
+        return True
+

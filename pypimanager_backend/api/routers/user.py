@@ -16,10 +16,10 @@ from api.base import oauth2_scheme, create_access_token, router, get_db, get_pas
     ACCESS_TOKEN_EXPIRE_MINUTES
 from api.schemas.base_schema import ResponseBase
 from api.schemas.user import TokenData, UserManage, Token
-from api.cruds.user import get_user_info, authenticate_user, update_user_secret
+import api.cruds.user as crud
 from utils.db import DB
-from model.fixture import ADMIN_ROLE_NAME
-from utils.log import logger
+from utils.error_code import error_code
+from model.fixture import ADMIN_ROLE_NAME, USER_ROLE_NAME
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme), db: DB = Depends(get_db)):
@@ -36,7 +36,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme), db: DB = Depends
         token_data = TokenData(username=username)
     except JWTError:
         raise credentials_exception
-    user = get_user_info(username=token_data.username, db=db)
+    user = crud.get_user_info(username=token_data.username, db=db)
     if user is None:
         raise credentials_exception
     return user
@@ -55,7 +55,7 @@ async def get_current_active_user(current_user: UserManage = Depends(get_current
 
 @router.post("/token", response_model=Token)
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: DB = Depends(get_db)):
-    user = authenticate_user(form_data.username, form_data.password, db=db)
+    user = crud.authenticate_user(form_data.username, form_data.password, db=db)
     if user is False:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
@@ -72,12 +72,26 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 
 @router.get("/user/info/", response_model=ResponseBase)
 async def read_user_info(current_user: UserManage = Depends(get_current_active_user), db: DB = Depends(get_db)):
-    user_info = get_user_info(current_user.username, db=db)
+    user_info = crud.get_user_info(current_user.username, db=db)
     resp_data = ResponseBase(
         description='获取当前用户信息',
         data=user_info
     ).dict()
     return resp_data
+
+
+@router.get("/all/user/info", response_model=ResponseBase)
+async def read_all_user_info(current_user: UserManage = Depends(get_current_active_user), db: DB = Depends(get_db)):
+    resp_data = ResponseBase(
+        description='全部当前用户信息',
+        data=None
+    )
+    current_user_user_info = crud.get_user_info(current_user.username, db=db)
+    # 超管才有权限
+    if current_user_user_info.role == ADMIN_ROLE_NAME:
+        all_user_info = crud.get_all_user_info(db=db)
+        resp_data.data = all_user_info
+    return resp_data.dict()
 
 
 @router.post("/password", response_model=ResponseBase)
@@ -102,23 +116,102 @@ async def update_user_password(username: str = Form(..., description='用户名�
         description='修改用户密码',
         data=False
     )
-    current_user_info = get_user_info(current_user.username, db=db)
+    current_user_info = crud.get_user_info(current_user.username, db=db)
     current_role = current_user_info.role
     # 如果是超管，可以修改任何用户的密码
     if current_role == ADMIN_ROLE_NAME:
         # 更新密码，让用户重新登录
-        if update_user_secret(username=username, hashed_password=get_password_hash(password=new_pass), db=db):
+        if crud.update_user_secret(username=username, hashed_password=get_password_hash(password=new_pass), db=db):
             resp_data.data = True
     # 不是超管，则只能修改当前用户的密码
     elif username == current_user_info.username:
         # 校验旧密码是否正确
-        if authenticate_user(username=username, password=old_pass, db=db):
+        if crud.authenticate_user(username=username, password=old_pass, db=db):
             # 旧密码校验通过，更新密码，让用户重新登录
-            if update_user_secret(username=username, hashed_password=get_password_hash(password=new_pass), db=db):
+            if crud.update_user_secret(username=username, hashed_password=get_password_hash(password=new_pass), db=db):
                 resp_data.data = True
         else:
             resp_data.message = '旧密码错误'
     else:
         msg = '非超管用户只能修改自己的密码'
+        resp_data.message = msg
+    return resp_data.dict()
+
+
+@router.post("/role", response_model=ResponseBase)
+async def update_user_role(username: str = Form(..., description='用户名称'),
+                           role: str = Form(..., description='用户角色'),
+                           current_user: UserManage = Depends(get_current_active_user),
+                           db: DB = Depends(get_db)):
+    """
+    修改用户角色
+    Args:
+        username:
+        role:
+        current_user:
+        db:
+
+    Returns:
+
+    """
+    resp_data = ResponseBase(
+        description='修改用户角色',
+        data=False
+    )
+    current_user_info = crud.get_user_info(current_user.username, db=db)
+    current_role = current_user_info.role
+    # 如果是超管，可以继续执行
+    if current_role == ADMIN_ROLE_NAME:
+        if crud.update_user_privilege(username=username, role=role, db=db):
+            resp_data.data = True
+    else:
+        msg = '非超管用户无权限操作'
+        resp_data.message = msg
+    return resp_data.dict()
+
+
+@router.post("/user/add", response_model=ResponseBase)
+async def add_new_user(username: str = Form(..., description='用户名称'),
+                       nickname: str = Form(..., description='用户昵称'),
+                       email: str = Form(..., description='邮箱'),
+                       password: str = Form(..., description='密码'),
+                       role: str = Form(USER_ROLE_NAME, description='角色'),
+                       current_user: UserManage = Depends(get_current_active_user),
+                       db: DB = Depends(get_db)):
+    """
+    增加新用户
+    Args:
+        username:
+        nickname:
+        email:
+        password:
+        role:
+        current_user:
+        db:
+
+    Returns:
+
+    """
+    resp_data = ResponseBase(
+        description='新增用户',
+        data=False
+    )
+    current_user_info = crud.get_user_info(current_user.username, db=db)
+    current_role = current_user_info.role
+    # 如果是超管，可以修改任何用户的密码
+    if current_role == ADMIN_ROLE_NAME:
+        # 更新密码，让用户重新登录
+        if crud.add_new_user(username=username,
+                             nickname=nickname,
+                             email=email,
+                             hashed_password=get_password_hash(password=password), db=db,
+                             role=role):
+            resp_data.data = True
+        else:
+            resp_data.data = False
+            resp_data.message = error_code.DB_INSERT_OR_UPDATE_ERROR.get('description')
+            resp_data.status = error_code.DB_INSERT_OR_UPDATE_ERROR.get('code')
+    else:
+        msg = '非超管用户无权限操作'
         resp_data.message = msg
     return resp_data.dict()

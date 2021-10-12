@@ -32,6 +32,11 @@ class UserManage(UserBase):
     role: Optional[str] = Field(USER_ROLE_NAME, description='用户角色')
 
 
+class UserInfo(UserManage):
+    """用于前端表格展示的数据结构定义"""
+    index: Optional[int] = Field(None, description='展示序号')
+
+
 class UserSecret(UserBase):
     """用户密码hash"""
     hashed_password: str = Field(..., description='用户密码hash值')
@@ -44,4 +49,3 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: Optional[str] = None
-
