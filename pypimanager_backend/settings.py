@@ -29,3 +29,8 @@ SQLALCHEMY_AUTO_COMMIT = False
 
 # API Config
 PORT = 5000
+
+# PYPIServer Config
+PYPI_REPOSITORY = 'http://192.168.41.3:8080'
+PYPI_USERNAME = 'admin'
+PYPI_PASSWORD = 'pypiadmin'

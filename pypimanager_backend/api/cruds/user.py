@@ -146,7 +146,6 @@ def update_user_privilege(username: str, role: str, db: DB):
     """
     try:
         user = db.session.query(User).filter(User.username == username).one()
-        print(f'input role: {role} current role: {user.role}')
         user.role = role
         db.session.flush()
         db.session.commit()

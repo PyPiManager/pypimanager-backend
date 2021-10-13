@@ -76,3 +76,27 @@ class Role(CommonTableArgsMixin, CommonColumnMixin, Base):
     user_manage = Column(Boolean, nullable=False, comment='用户管理权限')
     disabled = Column(Boolean, nullable=False, default=False, comment='角色是否被禁用')
 
+
+class UploadRecord(CommonTableArgsMixin, CommonColumnMixin, Base):
+    """
+    用户上传记录表
+    """
+    __tablename__ = 'upload_record'
+    __table_args_map__ = {
+        'comment': '用户上传记录表'
+    }
+    upload_user = Column(String(length=16), ForeignKey('user.username'), nullable=False, comment='上传用户')
+    package = Column(String(length=256), nullable=False, unique=True, index=True, comment='Python包名称')
+
+
+class DownloadRecord(CommonTableArgsMixin, CommonColumnMixin, Base):
+    """
+    用户下载记录表
+    """
+    __tablename__ = 'download_record'
+    __table_args_map__ = {
+        'comment': '用户下载记录表'
+    }
+    download_ip = Column(String(length=128), nullable=False, comment='下载用户IP')
+    package = Column(String(length=256), nullable=False, comment='下载的包名')
+    client = Column(String(length=128), nullable=False, comment='下载客户端名称')
