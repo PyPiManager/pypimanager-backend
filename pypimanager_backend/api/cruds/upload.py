@@ -18,6 +18,30 @@ from api.base import verify_password
 
 
 @logger.catch(reraise=True)
+def query_package_owner(package: str, db: DB):
+    """
+    查询包的所属权
+    Args:
+        package:
+        db:
+
+    Returns:
+
+    """
+    try:
+        data = db.session.query(UploadRecord.upload_user).filter(UploadRecord.package == package).one()
+        if data:
+            upload_user = data[0]
+        else:
+            upload_user = None
+    except Exception as err:
+        logger.warning(f'查询包的所有权失败: {package}, 错误信息: {err}')
+        return None
+    else:
+        return upload_user
+
+
+@logger.catch(reraise=True)
 def record_upload_event(username: str, package: str, db: DB):
     """
     记录Python包上传记录
