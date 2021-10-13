@@ -11,8 +11,8 @@ from datetime import timedelta
 from fastapi import Depends, HTTPException, status, Form
 from fastapi.security import OAuth2PasswordRequestForm
 
-from api.base import create_access_token, router, get_db, get_password_hash, get_current_active_user, \
-    ACCESS_TOKEN_EXPIRE_MINUTES
+from api.base import create_access_token, router, get_db, get_password_hash, ACCESS_TOKEN_EXPIRE_MINUTES
+from api.auth import get_current_active_user
 from api.schemas.base_schema import ResponseBase
 from api.schemas.user import UserManage, Token
 import api.cruds.user as crud
@@ -41,7 +41,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
 
 @router.get("/user/info/", response_model=ResponseBase)
 async def read_user_info(current_user: UserManage = Depends(get_current_active_user), db: DB = Depends(get_db)):
-    user_info = crud.get_user_info(current_user.username, db=db)
+    user_info = crud.query_user_info(current_user.username, db=db)
     resp_data = ResponseBase(
         description='获取当前用户信息',
         data=user_info
@@ -55,7 +55,7 @@ async def read_all_user_info(current_user: UserManage = Depends(get_current_acti
         description='全部当前用户信息',
         data=None
     )
-    current_user_user_info = crud.get_user_info(current_user.username, db=db)
+    current_user_user_info = crud.query_user_info(current_user.username, db=db)
     # 超管才有权限
     if current_user_user_info.role == ADMIN_ROLE_NAME:
         all_user_info = crud.get_all_user_info(db=db)
@@ -85,7 +85,7 @@ async def update_user_password(username: str = Form(..., description='用户名�
         description='修改用户密码',
         data=False
     )
-    current_user_info = crud.get_user_info(current_user.username, db=db)
+    current_user_info = crud.query_user_info(current_user.username, db=db)
     current_role = current_user_info.role
     # 如果是超管，可以修改任何用户的密码
     if current_role == ADMIN_ROLE_NAME:
@@ -136,7 +136,7 @@ async def update_user_role(username: str = Form(..., description='用户名称')
         description='修改用户角色',
         data=False
     )
-    current_user_info = crud.get_user_info(current_user.username, db=db)
+    current_user_info = crud.query_user_info(current_user.username, db=db)
     current_role = current_user_info.role
     # 如果是超管，可以继续执行
     if current_role == ADMIN_ROLE_NAME:
@@ -176,7 +176,7 @@ async def add_new_user(username: str = Form(..., description='用户名称'),
         description='新增用户',
         data=False
     )
-    current_user_info = crud.get_user_info(current_user.username, db=db)
+    current_user_info = crud.query_user_info(current_user.username, db=db)
     current_role = current_user_info.role
     # 如果是超管，可以修改任何用户的密码
     if current_role == ADMIN_ROLE_NAME:

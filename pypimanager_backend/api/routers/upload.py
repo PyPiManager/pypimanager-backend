@@ -7,25 +7,32 @@
 # @Modified By: toddlerya
 
 import aiofiles
-from fastapi import Depends, Form, File, UploadFile
+from fastapi import Depends, File, UploadFile
 
-
-from api.base import router, get_db, get_current_active_user
+from api.base import router, get_db
+from api.auth import get_current_active_user
 from api.schemas.base_schema import ResponseBase
 from api.schemas.user import UserManage
 from api.cruds.upload import record_upload_event
 from utils.db import DB
 from utils.twine_tool import twine_upload
-
 from utils.log import logger
-from utils.error_code import error_code
-from model.fixture import ADMIN_ROLE_NAME, USER_ROLE_NAME
 
 
 @router.post("/upload", response_model=ResponseBase)
 async def upload(upload_file: UploadFile = File(..., description='上传的Python包文件'),
                  current_user: UserManage = Depends(get_current_active_user),
                  db: DB = Depends(get_db)):
+    """
+    上传Python包
+    Args:
+        upload_file:
+        current_user:
+        db:
+
+    Returns:
+
+    """
     resp_data = ResponseBase(
         description='上传Python包',
         data=False
@@ -35,7 +42,7 @@ async def upload(upload_file: UploadFile = File(..., description='上传的Pytho
     file_name = upload_file.filename
     content_type = upload_file.content_type
     # 异步保存上传的文件到本地
-    async with aiofiles.open(file_name, 'wb') as save_file:
+    async with aiofiles.open(file_name, mode='wb') as save_file:
         content = await upload_file.read()
         await save_file.write(content)
     # 调用twines上传到pypiserver

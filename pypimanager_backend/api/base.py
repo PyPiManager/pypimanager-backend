@@ -9,15 +9,13 @@
 from typing import Optional
 from datetime import datetime, timedelta
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter
 from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
-from jose import jwt, JWTError
+from jose import jwt
 
-from api.cruds.user import get_user_info
 from utils.log import logger
 from utils.db import DB
-from api.schemas.user import TokenData, UserManage
 from settings import SQLALCHEMY_URL, SQLALCHEMY_ECHO, SQLALCHEMY_AUTO_FLUSH, SQLALCHEMY_AUTO_COMMIT
 
 
@@ -85,33 +83,3 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-
-async def get_current_user(token: str = Depends(oauth2_scheme), db: DB = Depends(get_db)):
-    credentials_exception = HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not validate credentials",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
-    try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username: str = payload.get("sub")
-        if username is None:
-            raise credentials_exception
-        token_data = TokenData(username=username)
-    except JWTError:
-        raise credentials_exception
-    user = get_user_info(username=token_data.username, db=db)
-    if user is None:
-        raise credentials_exception
-    return user
-
-
-async def get_current_user_token(token: str = Depends(oauth2_scheme)):
-    _ = await get_current_user(token)
-    return token
-
-
-async def get_current_active_user(current_user: UserManage = Depends(get_current_user)):
-    if current_user.disabled:
-        raise HTTPException(status_code=400, detail="Inactive user")
-    return current_user

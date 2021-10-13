@@ -17,7 +17,7 @@ from api.base import verify_password
 
 
 @logger.catch(reraise=True)
-def get_user_info(username: str, db: DB):
+def query_user_info(username: str, db: DB):
     """
     获取用户信息
     Args:
