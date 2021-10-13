@@ -18,6 +18,7 @@ from api.schemas.base_schema import ResponseBase
 from api.schemas.user import TokenData, UserManage, Token
 import api.cruds.user as crud
 from utils.db import DB
+from utils.log import logger
 from utils.error_code import error_code
 from model.fixture import ADMIN_ROLE_NAME, USER_ROLE_NAME
 
@@ -121,20 +122,29 @@ async def update_user_password(username: str = Form(..., description='用户名�
     # 如果是超管，可以修改任何用户的密码
     if current_role == ADMIN_ROLE_NAME:
         # 更新密码，让用户重新登录
-        if crud.update_user_secret(username=username, hashed_password=get_password_hash(password=new_pass), db=db):
+        crud_status, curd_msg = crud.update_user_secret(username=username,
+                                                        hashed_password=get_password_hash(password=new_pass),
+                                                        db=db)
+        if crud_status:
             resp_data.data = True
+        else:
+            resp_data.message = curd_msg
     # 不是超管，则只能修改当前用户的密码
     elif username == current_user_info.username:
-        # 校验旧密码是否正确
+        # 校验旧密码是否正确，防止其他用户修改密码
         if crud.authenticate_user(username=username, password=old_pass, db=db):
             # 旧密码校验通过，更新密码，让用户重新登录
-            if crud.update_user_secret(username=username, hashed_password=get_password_hash(password=new_pass), db=db):
+            crud_status, curd_msg = crud.update_user_secret(username=username,
+                                                            hashed_password=get_password_hash(password=new_pass),
+                                                            db=db)
+            if crud_status:
                 resp_data.data = True
+            else:
+                resp_data.message = curd_msg
         else:
             resp_data.message = '旧密码错误'
     else:
-        msg = '非超管用户只能修改自己的密码'
-        resp_data.message = msg
+        resp_data.message = '非超管用户只能修改自己的密码'
     return resp_data.dict()
 
 
@@ -162,11 +172,13 @@ async def update_user_role(username: str = Form(..., description='用户名称')
     current_role = current_user_info.role
     # 如果是超管，可以继续执行
     if current_role == ADMIN_ROLE_NAME:
-        if crud.update_user_privilege(username=username, role=role, db=db):
+        crud_status, crud_message = crud.update_user_privilege(username=username, role=role, db=db)
+        if crud_status:
             resp_data.data = True
+        else:
+            resp_data.message = crud_message
     else:
-        msg = '非超管用户无权限操作'
-        resp_data.message = msg
+        resp_data.message = '非超管用户无权限操作'
     return resp_data.dict()
 
 
@@ -201,16 +213,18 @@ async def add_new_user(username: str = Form(..., description='用户名称'),
     # 如果是超管，可以修改任何用户的密码
     if current_role == ADMIN_ROLE_NAME:
         # 更新密码，让用户重新登录
-        if crud.add_new_user(username=username,
-                             nickname=nickname,
-                             email=email,
-                             hashed_password=get_password_hash(password=password), db=db,
-                             role=role):
+        crud_status, crud_message = crud.add_new_user(username=username,
+                                                      nickname=nickname,
+                                                      email=email,
+                                                      hashed_password=get_password_hash(password=password), db=db,
+                                                      role=role)
+        if crud_status:
             resp_data.data = True
         else:
             resp_data.data = False
             resp_data.message = error_code.DB_INSERT_OR_UPDATE_ERROR.get('description')
             resp_data.status = error_code.DB_INSERT_OR_UPDATE_ERROR.get('code')
+            logger.warning(crud_message)
     else:
         msg = '非超管用户无权限操作'
         resp_data.message = msg

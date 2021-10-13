@@ -126,10 +126,10 @@ def update_user_secret(username: str, hashed_password: str, db: DB):
         db.session.flush()
         db.session.commit()
     except Exception as err:
-        logger.error(f'查询用户信息失败, username: {username}, 错误信息: {err}')
-        return False
+        message = f'查询用户信息失败, username: {username}, 错误信息: {err}'
+        return False, message
     else:
-        return True
+        return True, ""
 
 
 @logger.catch(reraise=True)
@@ -151,10 +151,10 @@ def update_user_privilege(username: str, role: str, db: DB):
         db.session.flush()
         db.session.commit()
     except Exception as err:
-        logger.error(f'查询用户信息失败, username: {username}, 错误信息: {err}')
-        return False
+        message = f'查询用户信息失败, username: {username}, 错误信息: {err}'
+        return False, message
     else:
-        return True
+        return True, ""
 
 
 @logger.catch(reraise=True)
@@ -189,9 +189,8 @@ def add_new_user(db: DB,
         db.insert_or_update(User, **new_user_data)
         db.session.commit()
     except Exception as err:
-        logger.error(f"新增用户失败: {err}")
         db.session.rollback()
-        return False
+        return False, f"新增用户失败: {err}"
     else:
-        return True
+        return True, ''
 
