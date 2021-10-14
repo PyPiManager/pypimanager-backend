@@ -8,7 +8,7 @@
 import pathlib
 
 import aiofiles
-from fastapi import Depends, File, UploadFile
+from fastapi import Depends, File, UploadFile, HTTPException, status
 
 from api.base import router, get_db
 from api.auth import get_current_active_user
@@ -41,15 +41,18 @@ async def upload(upload_file: UploadFile = File(..., description='上传的Pytho
     )
     username = current_user.username
     file_name = upload_file.filename
-    # TODO jiao yan wenjiangming
+    # TODO jiao yan wenjiangming,
     package_owner = query_package_owner(package=file_name, db=db)
     # 当前上传的包有所属人，则进行逻辑判定：
     # 1. 本人上传过的文件，允许重复上传，进行覆盖更新
     # 2. 若不是本人上传过的，则不允许上传，给出提示信息
     # 以此保留记录上传用户的贡献度
-    logger.info(f'package_owner=> {package_owner}, username: {username}, package: {file_name}')
     if package_owner is not None and username != package_owner:
         resp_data.message = '包已存在，无需重复上传'
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail=f'包已存在，无需重复上传',
+        )
     else:
         # 异步保存上传的文件到本地
         async with aiofiles.open(file_name, mode='wb') as save_file:
@@ -67,9 +70,17 @@ async def upload(upload_file: UploadFile = File(..., description='上传的Pytho
                 logger.error(f'上传事件记录失败, 用户: {username}, 包: {file_name}, 错误信息: {record_message}')
                 resp_data.message = '上传信息记录错误'
                 delete_file(pathlib.Path(file_name).absolute())
+                raise HTTPException(
+                    status_code=status.HTTP_406_NOT_ACCEPTABLE,
+                    detail=f'上传信息记录错误',
+                )
         else:
             # 上传失败则不记录
             logger.error(f'twine上传失败, 用户: {username}, 错误信息: {twine_message}')
             resp_data.message = f'上传到PyPi服务错误: {twine_message}'
             delete_file(pathlib.Path(file_name).absolute())
+            raise HTTPException(
+                status_code=status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
+                detail=f'请确认Python包是否正确',
+            )
     return resp_data.dict()

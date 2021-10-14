@@ -52,7 +52,7 @@ async def read_user_info(current_user: UserManage = Depends(get_current_active_u
 @router.get("/all/user/info", response_model=ResponseBase)
 async def read_all_user_info(current_user: UserManage = Depends(get_current_active_user), db: DB = Depends(get_db)):
     resp_data = ResponseBase(
-        description='全部当前用户信息',
+        description='全部用户信息',
         data=None
     )
     current_user_user_info = crud.query_user_info(current_user.username, db=db)
