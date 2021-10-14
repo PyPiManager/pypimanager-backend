@@ -37,32 +37,35 @@ def query_package(package: str, db: DB):
         if like_query_data:
             package_data = gen_package_search_result(package=package,
                                                      package_array=like_query_data,
-                                                     db=db)
+                                                     db=db,
+                                                     threshold=0.0)
         # 数据库没匹配中，则获取全部包，进行相似度匹配给出个低相关性的推荐结果
         else:
             all_query_data = db.session.query(UploadRecord.package).all()
             package_data = gen_package_search_result(package=package,
                                                      package_array=all_query_data,
-                                                     db=db)
+                                                     db=db,
+                                                     threshold=0.4)
     if package_data:
         message = 'ok'
     return package_data, message
 
 
-def gen_package_search_result(package: str, package_array: tuple, db: DB):
+def gen_package_search_result(package: str, package_array: tuple, db: DB, threshold=0.4):
     """
     模糊匹配评分排序，生成包查询到结果
     Args:
         package
         package_array:
         db:
+        threshold:
 
     Returns:
 
     """
     package_data = list()
     package_list = [each[0] for each in package_array]
-    fuzzy_list = fuzzy_match(package, package_list, threshold=0.8)
+    fuzzy_list = fuzzy_match(package, package_list, threshold=threshold)
     for index, each in enumerate(fuzzy_list):
         package_name = list(each.values())[0]
         package_url = PYPI_BASE_PACKAGE_URL + package_name
