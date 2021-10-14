@@ -60,15 +60,15 @@ def gen_package_search_result(package: str, package_array: tuple, db: DB):
     Returns:
 
     """
-    package_data = dict()
+    package_data = list()
     package_list = [each[0] for each in package_array]
     fuzzy_list = fuzzy_match(package, package_list, threshold=0.8)
-    for each in fuzzy_list:
+    for index, each in enumerate(fuzzy_list):
         package_name = list(each.values())[0]
         package_url = PYPI_BASE_PACKAGE_URL + package_name
         # upload_nick_name = {"nickname": "郭群"}
         upload_nick_name = db.session.query(User.nickname). \
             filter(UploadRecord.package == package_name,
                    UploadRecord.upload_user == User.username).first()
-        package_data[package_name] = {'url': package_url, **upload_nick_name}
+        package_data.append({'index': index + 1, 'package_name': package_name, 'url': package_url, **upload_nick_name})
     return package_data
