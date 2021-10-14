@@ -49,10 +49,10 @@ async def upload(upload_file: UploadFile = File(..., description='上传的Pytho
     # 以此保留记录上传用户的贡献度
     if package_owner is not None and username != package_owner:
         resp_data.message = '包已存在，无需重复上传'
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail=f'包已存在，无需重复上传',
-        )
+        # raise HTTPException(
+        #     status_code=status.HTTP_409_CONFLICT,
+        #     detail=f'包已存在，无需重复上传',
+        # )
     else:
         # 异步保存上传的文件到本地
         async with aiofiles.open(file_name, mode='wb') as save_file:
