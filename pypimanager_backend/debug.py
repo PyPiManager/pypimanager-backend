@@ -11,8 +11,8 @@ import sys
 from utils.log import logger
 
 
-print(sys.argv[1:])
-logger.error(f'asdfs err')
-print('ok')
+data = {"a": "2123"}
 
-
+print(data)
+print(data.values())
+print(type(data.values()))

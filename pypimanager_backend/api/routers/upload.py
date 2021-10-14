@@ -41,7 +41,6 @@ async def upload(upload_file: UploadFile = File(..., description='上传的Pytho
     )
     username = current_user.username
     file_name = upload_file.filename
-    # TODO jiao yan wenjiangming,
     package_owner = query_package_owner(package=file_name, db=db)
     # 当前上传的包有所属人，则进行逻辑判定：
     # 1. 本人上传过的文件，允许重复上传，进行覆盖更新

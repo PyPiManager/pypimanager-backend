@@ -6,15 +6,9 @@
 # @Last Modified: 2021/10/13 下午2:39
 # @Modified By: toddlerya
 
-
-from fastapi.encoders import jsonable_encoder
-
 from utils.log import logger
 from utils.db import DB
 from model.models import UploadRecord
-from model.fixture import USER_ROLE_NAME
-from api.schemas.user import UserSecret, UserManage, UserInfo
-from api.base import verify_password
 
 
 @logger.catch(reraise=True)
