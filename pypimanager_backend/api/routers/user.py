@@ -22,7 +22,7 @@ from utils.error_code import error_code
 from model.fixture import ADMIN_ROLE_NAME, USER_ROLE_NAME
 
 
-@router.post("/token", response_model=Token)
+@router.post("/token", response_model=Token, tags=['user'])
 async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: DB = Depends(get_db)):
     user = crud.authenticate_user(form_data.username, form_data.password, db=db)
     if user is False:
@@ -39,7 +39,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
     return {"access_token": access_token, "token_type": "bearer"}
 
 
-@router.get("/user/info/", response_model=ResponseBase)
+@router.get("/user/info/", response_model=ResponseBase, tags=['user'])
 async def read_user_info(current_user: UserManage = Depends(get_current_active_user), db: DB = Depends(get_db)):
     user_info = crud.query_user_info(current_user.username, db=db)
     resp_data = ResponseBase(
@@ -49,7 +49,7 @@ async def read_user_info(current_user: UserManage = Depends(get_current_active_u
     return resp_data
 
 
-@router.get("/all/user/info", response_model=ResponseBase)
+@router.get("/all/user/info", response_model=ResponseBase, tags=['user'])
 async def read_all_user_info(current_user: UserManage = Depends(get_current_active_user), db: DB = Depends(get_db)):
     resp_data = ResponseBase(
         description='全部用户信息',
@@ -63,7 +63,7 @@ async def read_all_user_info(current_user: UserManage = Depends(get_current_acti
     return resp_data.dict()
 
 
-@router.post("/password", response_model=ResponseBase)
+@router.post("/password", response_model=ResponseBase, tags=['user'])
 async def update_user_password(username: str = Form(..., description='用户名称'),
                                old_pass: str = Form(None, description='旧密码'),
                                new_pass: str = Form(..., description='新密码'),
@@ -116,7 +116,7 @@ async def update_user_password(username: str = Form(..., description='用户名�
     return resp_data.dict()
 
 
-@router.post("/role", response_model=ResponseBase)
+@router.post("/role", response_model=ResponseBase, tags=['user'])
 async def update_user_role(username: str = Form(..., description='用户名称'),
                            role: str = Form(..., description='用户角色'),
                            current_user: UserManage = Depends(get_current_active_user),
@@ -150,7 +150,7 @@ async def update_user_role(username: str = Form(..., description='用户名称')
     return resp_data.dict()
 
 
-@router.post("/user/add", response_model=ResponseBase)
+@router.post("/user/add", response_model=ResponseBase, tags=['user'])
 async def add_new_user(username: str = Form(..., description='用户名称'),
                        nickname: str = Form(..., description='用户昵称'),
                        email: str = Form(..., description='邮箱'),

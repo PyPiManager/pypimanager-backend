@@ -21,7 +21,7 @@ from utils.log import logger
 from utils.file_tool import delete_file
 
 
-@router.post("/upload", response_model=ResponseBase)
+@router.post("/upload", response_model=ResponseBase, tags=['upload'])
 async def upload(upload_file: UploadFile = File(..., description='上传的Python包文件'),
                  current_user: UserManage = Depends(get_current_active_user),
                  db: DB = Depends(get_db)):

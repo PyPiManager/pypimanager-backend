@@ -68,5 +68,10 @@ class ErrorCode:
             'description': '用户名或密码错误'
         }
 
+        self.HTTP_DATA_EXCEPTION = {
+            'code': 'E4010',
+            'description': '用户名或密码错误'
+        }
+
 
 error_code = ErrorCode()

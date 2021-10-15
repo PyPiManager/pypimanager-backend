@@ -17,9 +17,8 @@ from fastapi.openapi.docs import (
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
-from api.routers import user
-from api.routers import upload
-from api.routers import search
+from api.routers import user, upload, search, package
+
 
 app = FastAPI(
     title='PyPiManager',
@@ -48,6 +47,7 @@ app.add_middleware(
 app.include_router(user.router)
 # app.include_router(upload.router)
 # app.include_router(search.router)
+# app.include_router(package.router)
 
 
 @app.get('/docs', include_in_schema=False)

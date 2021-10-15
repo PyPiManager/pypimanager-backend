@@ -98,8 +98,7 @@ class Manager:
             Config(
                 app=app,
                 host='0.0.0.0',
-                port=PORT,
-                reload=True
+                port=PORT
             )
         )
         setup_logging(self.log_config['handlers'])
