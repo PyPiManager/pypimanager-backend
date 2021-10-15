@@ -38,8 +38,7 @@ def get_pypi_simple_index():
             content = resp.text.encode('utf-8')
             html = etree.HTML(content)
             __data = html.xpath('//a/text()')
-            for index, name in enumerate(__data):
-                data.append({"index": index+1, "package": name})
+            data = [{'package': ele} for ele in __data]
             status = True
     return status, message, data
 

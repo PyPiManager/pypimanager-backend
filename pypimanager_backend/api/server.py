@@ -17,7 +17,7 @@ from fastapi.openapi.docs import (
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 
-from api.routers import user, upload, search, package
+from api.routers import user, upload, search, package, rank
 
 
 app = FastAPI(
