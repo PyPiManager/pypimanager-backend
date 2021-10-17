@@ -55,7 +55,7 @@ def query_person_upload_detail(username: str, db: DB):
         data = db.session.query(UploadRecord.package, User.nickname). \
             filter(UploadRecord.upload_user ==
                    username, User.username == username,
-                   User.username == UploadRecord.upload_user).all()
+                   User.username == UploadRecord.upload_user).filter(UploadRecord.deleted is False).all()
     except Exception as err:
         message = f'查询用户上传详情失败: {err}'
     else:

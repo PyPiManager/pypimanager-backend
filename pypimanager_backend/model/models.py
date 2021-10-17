@@ -89,6 +89,18 @@ class UploadRecord(CommonTableArgsMixin, CommonColumnMixin, Base):
     package = Column(String(length=256), nullable=False, unique=True, index=True, comment='Python包名称')
 
 
+class OperateRecord(CommonTableArgsMixin, CommonColumnMixin, Base):
+    """
+    管理员操作事件记录表
+    """
+    __tablename__ = 'operate_record'
+    __table_args_map__ = {
+        'comment': '管理员操作事件记录表'
+    }
+    operate_user = Column(String(length=16), ForeignKey('user.username'), nullable=False, comment='操作人')
+    event = Column(String(length=256), nullable=False, comment='操作事件')
+
+
 class DownloadRecord(CommonTableArgsMixin, CommonColumnMixin, Base):
     """
     用户下载记录表

@@ -33,3 +33,26 @@ def delete_file(file_path):
     else:
         logger.warning(f'文件不存在: {file_path}')
         return False
+
+
+def move(src, dst):
+    """
+    移动文件
+    Args:
+        src:
+        dst:
+
+    Returns:
+
+    """
+    if pathlib.Path(src).exists():
+        try:
+            shutil.move(src=src, dst=dst)
+        except Exception as err:
+            logger.error(f'移动失败, src: {src}, dst: {dst}, 报错信息: {err}')
+            return False
+        else:
+            return True
+    else:
+        logger.error(f'未发现文件或目录，请确认源目标是否正确: {src}')
+        return False
