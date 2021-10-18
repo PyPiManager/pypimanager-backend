@@ -28,6 +28,8 @@ def query_package(package: str, db: DB):
     # 先通过LIKE查询数据库，缩小匹配范围，更精确
     package_data = dict()
     message = '未查询到相似包，欢迎补充上传哦~'
+    # simple索引的charset-normalizer，转为charset_normalizer，因为包名文件大多是_的，索引是-的
+    package = package.replace('-', '_')
     try:
         like_query_data = db.session.query(UploadRecord.package).filter(UploadRecord.package.like(f'%{package}%')).all()
     except Exception as err:
