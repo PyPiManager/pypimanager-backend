@@ -7,7 +7,7 @@
 # @Modified By: toddlerya
 
 
-from sqlalchemy import Column, Integer, Boolean, String, DateTime, ForeignKey, UniqueConstraint, func, text, inspect
+from sqlalchemy import Column, Integer, Boolean, String, DateTime, ForeignKey, UniqueConstraint, func, text
 from sqlalchemy.orm import declarative_base, declared_attr, declarative_mixin
 
 Base = declarative_base()
@@ -98,10 +98,10 @@ class OperateRecord(CommonTableArgsMixin, CommonColumnMixin, Base):
         'comment': '管理员操作事件记录表'
     }
     operate_user = Column(String(length=16), ForeignKey('user.username'), nullable=False, comment='操作人')
-    event = Column(String(length=256), nullable=False, comment='操作事件')
+    event = Column(String(length=512), nullable=False, comment='操作事件')
 
 
-class DownloadRecord(CommonTableArgsMixin, CommonColumnMixin, Base):
+class DownloadRecord(CommonTableArgsMixin, Base):
     """
     用户下载记录表
     """
@@ -109,6 +109,9 @@ class DownloadRecord(CommonTableArgsMixin, CommonColumnMixin, Base):
     __table_args_map__ = {
         'comment': '用户下载记录表'
     }
-    download_ip = Column(String(length=128), nullable=False, comment='下载用户IP')
-    package = Column(String(length=256), nullable=False, comment='下载的包名')
-    client = Column(String(length=128), nullable=False, comment='下载客户端名称')
+    __table_args_array__ = [UniqueConstraint('download_ip', 'package', 'download_datetime', name='uk_download')]
+    id = Column(Integer, primary_key=True, autoincrement=True, comment='主键')
+    download_ip = Column(String(length=32), nullable=False, comment='下载用户IP')
+    package = Column(String(length=256), nullable=False, comment='包名')
+    client = Column(String(length=512), nullable=False, comment='客户端信息')
+    download_datetime = Column(DateTime(timezone=False), nullable=False, server_default=func.now(), comment='创建时间')

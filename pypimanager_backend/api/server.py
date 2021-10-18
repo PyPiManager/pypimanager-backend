@@ -16,7 +16,10 @@ from fastapi.openapi.docs import (
 )
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from apscheduler.schedulers.background import BackgroundScheduler
 
+from api.cruds.download import load_download_record
+from utils.db import DB
 from api.routers import user, upload, search, package, rank
 
 
@@ -79,3 +82,22 @@ async def redoc_html():
 @app.get('/')
 async def root():
     return {'msg': 'Be Happy'}
+
+
+@app.on_event('startup')
+def start_scheduler():
+    """
+    启动后台定时任务统计下载日志入库
+    Returns:
+
+    """
+    scheduler = BackgroundScheduler()
+    db = DB()
+    scheduler.add_job(
+        id='load_download_record',
+        func=load_download_record,
+        args=(db,),
+        trigger='interval',
+        minutes=20
+    )
+    scheduler.start()

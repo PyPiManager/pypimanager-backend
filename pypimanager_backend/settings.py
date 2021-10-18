@@ -38,3 +38,6 @@ PYPI_BASE_PACKAGE_URL = f'{PYPI_REPOSITORY}/packages/'
 PYPI_SIMPLE_INDEX_URL = f'{PYPI_REPOSITORY}/simple/'
 PYPI_DATA_PATH = '/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypiserver/packages'
 PYPI_RECYCLE_BIN_PATH = '/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypiserver/recycle_bin'
+
+# NGINX Config
+NGINX_ACCESS_PYPI_PACKAGE_LOG = '/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-nginx/logs/access.pypi.packages.log'
