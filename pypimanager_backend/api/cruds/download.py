@@ -6,7 +6,6 @@
 # @Last Modified: 2021/10/18 下午4:41
 # @Modified By: toddlerya
 
-
 from utils.log import logger
 from utils.db import DB
 from utils.log_tool import extract_download_record
@@ -31,8 +30,5 @@ def load_download_record(db: DB):
     db.session.flush()
     db.session.commit()
     return True
-
-
-
 
 

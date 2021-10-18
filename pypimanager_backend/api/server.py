@@ -20,7 +20,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 from api.cruds.download import load_download_record
 from utils.db import DB
-from api.routers import user, upload, search, package, rank
+from api.routers import user, upload, search, package, rank, statistics
 
 
 app = FastAPI(

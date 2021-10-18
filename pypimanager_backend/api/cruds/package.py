@@ -17,7 +17,7 @@ def delete_package_from_db(package: str, operate_username: str, db: DB):
     删除Python包，将该包的状态修改为禁用，用户必须精确到传入一个包文件名
     Args:
         package:
-        operate_username：
+        operate_username:
         db:
 
     Returns:
