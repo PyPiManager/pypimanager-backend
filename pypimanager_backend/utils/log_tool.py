@@ -34,16 +34,17 @@ def extract_download_record():
             sp_line = line.split()
             remote_ip = sp_line[0]
             download_datetime = sp_line[2][1:]
-            package = sp_line[5][15:]
+            package = sp_line[5][10:]
             client = ' '.join(sp_line[10:-1])[1:-1]
             # print(f'remote: {remote_ip} datetime {download_datetime} package {package} client {client}')
-            download_data = {
-                'download_ip': remote_ip,
-                'package': package,
-                'client': client,
-                'download_datetime': datetime.datetime.strptime(download_datetime, '%d/%b/%Y:%H:%M:%S')
-            }
-            yield download_data
+            if package:
+                download_data = {
+                    'download_ip': remote_ip,
+                    'package': package,
+                    'client': client,
+                    'download_datetime': datetime.datetime.strptime(download_datetime, '%d/%b/%Y:%H:%M:%S')
+                }
+                yield download_data
 
 
 if __name__ == '__main__':

@@ -98,6 +98,6 @@ def start_scheduler():
         func=load_download_record,
         args=(db,),
         trigger='interval',
-        minutes=20
+        minutes=2
     )
     scheduler.start()
