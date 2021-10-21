@@ -16,6 +16,50 @@ from api.schemas.base_schema import ResponseBase
 from utils.db import DB
 
 
+@router.get('/stat/all_count', response_model=ResponseBase, tags=['stat'])
+async def all_count(db: DB = Depends(get_db)):
+    """
+    获取除趋势图以外各个条目的统计数值，用于首页的Card展示
+    Args:
+        db:
+
+    Returns:
+
+    """
+    # 包统计
+    package_status, package_message, package_data = get_pypi_simple_index()
+    if package_status:
+        total_package_count = len(package_data)
+    else:
+        total_package_count = 0
+    # 文件统计
+    file_message, file_result = crud.stat_total_file_count(db)
+    # 统计累计下载用户数量
+    download_user_message, download_user_result = crud.stat_download_user_count(db)
+    # 统计下载总量
+    download_total_message, download_total_result = crud.stat_download_total_count(db)
+    # 累计节省人时，按下载安装一个包需要2分钟为例
+    hour_message, hour_result = crud.stat_download_total_count(db)
+    hour = int(hour_result * 60 * 2 / 3600)
+    data = {
+        'package_count': total_package_count,
+        'file_count': file_result,
+        'download_user_count': download_user_result,
+        'download_total_count': download_total_result,
+        'save_time_hour': hour
+    }
+    resp_data = ResponseBase(
+        description='获取除趋势图以外各个条目的统计数值，用于首页的Card展示',
+        data=data,
+    )
+    if package_message != 'ok' or file_message != 'ok' or download_user_message != 'ok' or \
+            download_total_message != 'ok' or hour_message != 'ok':
+        resp_data.message = '某个统计项异常，请检查'
+    else:
+        resp_data.message = 'ok'
+    return resp_data.dict()
+
+
 @router.get('/stat/trend', response_model=ResponseBase, tags=['stat'])
 async def trend(db: DB = Depends(get_db)):
     """
