@@ -7,6 +7,7 @@
 # @Modified By: toddlerya
 
 import logging
+import pathlib
 
 LOG_LEVEL = logging.getLevelName("INFO")
 
@@ -30,14 +31,17 @@ SQLALCHEMY_AUTO_COMMIT = False
 # API Config
 PORT = 5000
 
+# PATH Config
+PROJECT_ROOT_PATH = str(pathlib.Path(pathlib.Path.cwd()).parent.parent.absolute())
+
 # PYPIServer Config
 PYPI_REPOSITORY = 'http://10.1.14.67:8080'
 PYPI_USERNAME = 'admin'
 PYPI_PASSWORD = 'pypiadmin'
 PYPI_BASE_PACKAGE_URL = f'{PYPI_REPOSITORY}/packages/'
 PYPI_SIMPLE_INDEX_URL = f'{PYPI_REPOSITORY}/simple/'
-PYPI_DATA_PATH = '/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypiserver/packages'
-PYPI_RECYCLE_BIN_PATH = '/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypiserver/recycle_bin'
+PYPI_DATA_PATH = f'{PROJECT_ROOT_PATH}/pypiserver/packages'
+PYPI_RECYCLE_BIN_PATH = f'{PROJECT_ROOT_PATH}/pypiserver/recycle_bin'
 
 # NGINX Config
-NGINX_ACCESS_PYPI_PACKAGE_LOG = '/home/evi1/Documents/GitHub/pypimanager/pypimanager-deploy/pypimanager-nginx/logs/access.pypi.packages.log'
+NGINX_ACCESS_PYPI_PACKAGE_LOG = f'{PROJECT_ROOT_PATH}/pypimanager-nginx/logs/access.pypi.packages.log'

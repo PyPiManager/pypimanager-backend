@@ -15,16 +15,17 @@ from utils.db import DB
 
 
 @router.get('/rank', response_model=ResponseBase, tags=['rank'])
-async def rank(db: DB = Depends(get_db)):
+async def rank(limit: int = 0, db: DB = Depends(get_db)):
     """
     获取排行榜数据
     Args:
+        limit
         db:
 
     Returns:
 
     """
-    message, result = crud.stat_user_upload_count(db)
+    message, result = crud.stat_user_upload_count(limit_num=limit, db=db)
     resp_data = ResponseBase(
         description='查询用户上传贡献统计数据',
         data=result,

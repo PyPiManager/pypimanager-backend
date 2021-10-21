@@ -15,10 +15,11 @@ from model.models import UploadRecord, User
 from settings import PYPI_BASE_PACKAGE_URL
 
 
-def stat_user_upload_count(db: DB):
+def stat_user_upload_count(limit_num: int, db: DB):
     """
     统计用户上传数量
     Args:
+        limit_num
         db:
 
     Returns:
@@ -27,12 +28,16 @@ def stat_user_upload_count(db: DB):
     user_upload_count_data = list()
     message = 'ok'
     try:
-        user_upload_count_data = db.session.query(User.nickname,
-                                                  User.username,
-                                                  func.count(UploadRecord.package).label('count')) \
+        user_upload_count_res = db.session.query(User.nickname,
+                                                 User.username,
+                                                 func.count(UploadRecord.package).label('count')) \
             .filter(UploadRecord.upload_user == User.username). \
             group_by(UploadRecord.upload_user). \
-            order_by(desc('count')).all()
+            order_by(desc('count'))
+        if limit_num and limit_num > 0:
+            user_upload_count_data = user_upload_count_res.limit(limit_num).all()
+        else:
+            user_upload_count_data = user_upload_count_res.all()
     except Exception as err:
         message = f'统计错误: {err}'
         logger.error(message)
