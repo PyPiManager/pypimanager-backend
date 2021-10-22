@@ -32,16 +32,16 @@ SQLALCHEMY_AUTO_COMMIT = False
 PORT = 5000
 
 # PATH Config
-PROJECT_ROOT_PATH = str(pathlib.Path(pathlib.Path.cwd()).parent.parent.absolute())
+PROJECT_ROOT_PATH = pathlib.Path(__file__).parent.parent.parent.absolute()
 
 # PYPIServer Config
-PYPI_REPOSITORY = 'http://10.1.14.67:8080'
+PYPI_REPOSITORY = 'http://192.168.41.3:8080'
 PYPI_USERNAME = 'admin'
 PYPI_PASSWORD = 'pypiadmin'
 PYPI_BASE_PACKAGE_URL = f'{PYPI_REPOSITORY}/packages/'
 PYPI_SIMPLE_INDEX_URL = f'{PYPI_REPOSITORY}/simple/'
-PYPI_DATA_PATH = f'{PROJECT_ROOT_PATH}/pypiserver/packages'
-PYPI_RECYCLE_BIN_PATH = f'{PROJECT_ROOT_PATH}/pypiserver/recycle_bin'
+PYPI_DATA_PATH = str(PROJECT_ROOT_PATH.joinpath('pypiserver/packages').absolute())
+PYPI_RECYCLE_BIN_PATH = str(PROJECT_ROOT_PATH.joinpath('pypiserver/recycle_bin').absolute())
 
 # NGINX Config
-NGINX_ACCESS_PYPI_PACKAGE_LOG = f'{PROJECT_ROOT_PATH}/pypimanager-nginx/logs/access.pypi.packages.log'
+NGINX_ACCESS_PYPI_PACKAGE_LOG = str(PROJECT_ROOT_PATH.joinpath('pypimanager-nginx/logs/access.pypi.packages.log').absolute())

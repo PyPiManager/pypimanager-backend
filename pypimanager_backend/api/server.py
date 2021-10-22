@@ -91,7 +91,7 @@ def start_scheduler():
     Returns:
 
     """
-    scheduler = BackgroundScheduler()
+    scheduler = BackgroundScheduler(timezone="Asia/Shanghai")
     db = DB()
     scheduler.add_job(
         id='load_download_record',
