@@ -16,7 +16,7 @@ LOG_LEVEL = logging.getLevelName("INFO")
 MYSQL_DRIVER = 'pymysql'
 MYSQL_USERNAME = 'root'
 MYSQL_PASSWORD = '123456'
-MYSQL_HOST = '192.199.41.4'
+MYSQL_HOST = 'pypi_mysql'
 MYSQL_PORT = '3306'
 DB_NAME = 'pypimanager'
 CHARSET = 'utf8mb4'
@@ -35,7 +35,7 @@ PORT = 5000
 PROJECT_ROOT_PATH = pathlib.Path(__file__).parent.parent.parent.absolute()
 
 # PYPIServer Config
-PYPI_REPOSITORY = 'http://192.199.41.3:8080'
+PYPI_REPOSITORY = 'http://pypi_server:8080'
 PYPI_USERNAME = 'admin'
 PYPI_PASSWORD = 'pypiadmin'
 PYPI_BASE_PACKAGE_URL = f'{PYPI_REPOSITORY}/packages/'
