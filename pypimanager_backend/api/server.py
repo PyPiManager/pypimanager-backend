@@ -20,6 +20,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 
 from api.cruds.download import load_download_record
 from utils.db import DB
+from utils.pypi_tool import pypi_simple_index_cache
 from api.routers import user, upload, search, package, rank, statistics
 
 
@@ -91,6 +92,7 @@ def start_scheduler():
     Returns:
 
     """
+    pypi_simple_index_cache('update')
     scheduler = BackgroundScheduler(timezone="Asia/Shanghai")
     db = DB()
     scheduler.add_job(
@@ -99,5 +101,12 @@ def start_scheduler():
         args=(db,),
         trigger='interval',
         minutes=2
+    )
+    scheduler.add_job(
+        id='update_pypi_simple_index',
+        func=pypi_simple_index_cache,
+        args=('update',),
+        trigger='interval',
+        seconds=10
     )
     scheduler.start()

@@ -9,11 +9,11 @@
 
 from fastapi import Depends
 
-from api.routers.package import get_pypi_simple_index
 import api.cruds.statistics as crud
 from api.base import router, get_db
 from api.schemas.base_schema import ResponseBase
 from utils.db import DB
+from utils.pypi_tool import pypi_simple_index_cache
 
 
 @router.get('/stat/all_count', response_model=ResponseBase, tags=['stat'])
@@ -27,7 +27,7 @@ async def all_count(db: DB = Depends(get_db)):
 
     """
     # 包统计
-    package_status, package_message, package_data = get_pypi_simple_index()
+    package_status, package_message, package_data = pypi_simple_index_cache()
     if package_status:
         total_package_count = len(package_data)
     else:

@@ -6,8 +6,9 @@
 # @Last Modified: 2021/9/28 上午11:02
 # @Modified By: toddlerya
 
-from typing import Optional
+from typing import Optional, List, Dict
 from datetime import datetime, timedelta
+from dataclasses import dataclass, field
 
 from fastapi import APIRouter
 from fastapi.security import OAuth2PasswordBearer
@@ -23,6 +24,14 @@ router = APIRouter(
     # prefix='/pypimanager/v1',
     responses={404: {'description': 'Not Found'}}
 )
+
+
+@dataclass
+class Cache:
+    PYPI_SIMPLE_INDEX: List = field(default_factory=list)
+
+
+CACHE = Cache()
 
 
 @logger.catch(reraise=True)
