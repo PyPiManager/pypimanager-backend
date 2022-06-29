@@ -7,7 +7,7 @@
 # @Modified By: toddlerya
 
 
-from sqlalchemy import Column, Integer, Boolean, String, DateTime, ForeignKey, UniqueConstraint, func, text
+from sqlalchemy import Column, Integer, Boolean, String, DateTime, ForeignKey, UniqueConstraint, func, text, BigInteger
 from sqlalchemy.orm import declarative_base, declared_attr, declarative_mixin
 
 Base = declarative_base()
@@ -110,7 +110,7 @@ class DownloadRecord(CommonTableArgsMixin, Base):
         'comment': '用户下载记录表'
     }
     __table_args_array__ = [UniqueConstraint('download_ip', 'package', 'download_datetime', name='uk_download')]
-    id = Column(Integer, primary_key=True, autoincrement=True, comment='主键')
+    id = Column(BigInteger, primary_key=True, autoincrement=True, comment='主键')
     download_ip = Column(String(length=32), nullable=False, comment='下载用户IP')
     package = Column(String(length=256), nullable=False, comment='包名')
     client = Column(String(length=512), nullable=False, comment='客户端信息')
