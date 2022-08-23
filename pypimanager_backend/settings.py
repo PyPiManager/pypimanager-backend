@@ -40,8 +40,8 @@ PYPI_USERNAME = 'admin'
 PYPI_PASSWORD = 'pypiadmin'
 PYPI_BASE_PACKAGE_URL = f'{PYPI_REPOSITORY}/packages/'
 PYPI_SIMPLE_INDEX_URL = f'{PYPI_REPOSITORY}/simple/'
-PYPI_DATA_PATH = str(PROJECT_ROOT_PATH.joinpath('pypiserver/packages').absolute())
-PYPI_RECYCLE_BIN_PATH = str(PROJECT_ROOT_PATH.joinpath('pypiserver/recycle_bin').absolute())
+PYPI_DATA_PATH = str(PROJECT_ROOT_PATH.joinpath('pypi_packages').absolute())
+PYPI_RECYCLE_BIN_PATH = str(PROJECT_ROOT_PATH.joinpath('pypi_packages_recycle_bin').absolute())
 
 # NGINX Config
 NGINX_ACCESS_PYPI_PACKAGE_LOG = str(PROJECT_ROOT_PATH.joinpath('pypimanager-nginx/logs/access.pypi.packages.log').absolute())
